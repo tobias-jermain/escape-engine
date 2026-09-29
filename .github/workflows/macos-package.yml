@@ -77,9 +77,10 @@ jobs:
           escape airports LON
           cfg="$HOME/Library/Application Support/escape-engine"
           mkdir -p "$cfg" && echo '{"setup_done": true, "auto_update_check": false}' > "$cfg/settings.json"
-          printf '5\n' | escape menu
+          printf '6\n' | escape menu
           escape setup --help > /dev/null
           escape update --help > /dev/null
+          escape explore --help > /dev/null
           app="/Applications/Escape Engine.app"
           test -x "$app/Contents/MacOS/escape-engine"
           plutil -lint "$app/Contents/Info.plist"

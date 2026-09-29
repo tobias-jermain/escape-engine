@@ -36,10 +36,12 @@ same day, for around [bold]£75 return[/bold].
 
 [bold]How it works[/bold]
 
-1. Choose where you fly from (all London airports by default).
-2. Choose a destination city and a date.
-3. It checks [bold]live[/bold] Google Flights prices and shows trips that fit:
-   out early, home the same night, at least 6 hours there.
+1. Choose where you fly from (all London airports by default) and your max price.
+2. It finds the cheapest destinations over the next 3 weeks by itself,
+   then checks [bold]live[/bold] Google Flights prices for the best ones.
+3. You get trips that fit: out early, home the same night, at least 6 hours there.
+
+Already know where you want to go? Use [bold]Search one destination[/bold] instead.
 
 Trips a little over budget are shown separately as [bold]"Just over"[/bold].
 Prices are per person, with the free small bag only."""
@@ -50,7 +52,8 @@ KEY_INFO = """You need a free [bold]SerpApi[/bold] key for live prices.
 2. Open your Dashboard and copy [bold]"Your Private API Key"[/bold]
 3. Paste it below (it stays hidden while you type)
 
-The free plan gives 250 searches a month. Each day-trip search uses 2."""
+The free plan gives 250 searches a month. A "find anywhere" run uses up to 10,
+and searching one destination uses 2."""
 
 
 @dataclass
@@ -229,7 +232,7 @@ def find_trip(console: Console, deps: MenuDeps, s: Settings, today: date) -> Non
     from escape_engine.cli import render, run_search
 
     if not _has_key(deps):
-        console.print("[red]An API key is needed first.[/red] Choose [bold]2[/bold] (Settings).")
+        console.print("[red]An API key is needed first.[/red] Choose [bold]3[/bold] (Settings).")
         return
     origin = _ask_valid("\n[bold]Fly from?[/bold]", s.home, airports.resolve, console)
     dest = choose_destination(console)
@@ -263,6 +266,49 @@ def find_trip(console: Console, deps: MenuDeps, s: Settings, today: date) -> Non
         console.print(f"[red]Search failed: {exc}[/red]")
         return
     render(result, console=console)
+
+
+EXPLORE_BUDGET = 10
+
+
+def find_anywhere(console: Console, deps: MenuDeps, s: Settings) -> None:
+    from escape_engine.cli import render, run_explore
+
+    if not _has_key(deps):
+        console.print("[red]An API key is needed first.[/red] Choose [bold]3[/bold] (Settings).")
+        return
+    origin = _ask_valid("\n[bold]Fly from?[/bold]", s.home, airports.resolve, console)
+    max_price = _ask_valid(
+        f"[bold]Max return price per person ({s.currency})?[/bold]",
+        s.max_price,
+        _positive_price,
+        console,
+    )
+    days = _ask_valid("[bold]How many days ahead?[/bold]", "21", _days, console)
+    if not Confirm.ask(
+        f"Find day trips from {origin} under {max_price} {s.currency}, next {days} days? "
+        f"Uses up to {EXPLORE_BUDGET} searches"
+    ):
+        return
+    console.print("Finding the cheapest places, then checking live prices…")
+    try:
+        result = run_explore(
+            origins=airports.resolve(origin),
+            rules=s.rules(max_price=max_price),
+            days=int(days),
+            budget=EXPLORE_BUDGET,
+        )
+    except (ProviderError, BudgetError, ValueError) as exc:
+        console.print(f"[red]Search failed: {exc}[/red]")
+        return
+    render(result, show_all=False, console=console)
+
+
+def _days(text: str) -> int:
+    value = int(text)
+    if not 2 <= value <= 90:
+        raise ValueError("choose between 2 and 90 days")
+    return value
 
 
 # --- Updates ----------------------------------------------------------------------------
@@ -307,11 +353,12 @@ def do_update(console: Console, deps: MenuDeps) -> bool:
 
 # --- Main loop --------------------------------------------------------------------------
 
-MENU = """[bold]1[/bold]  Find a day trip
-[bold]2[/bold]  Settings and API key
-[bold]3[/bold]  Check for updates
-[bold]4[/bold]  Show the guide
-[bold]5[/bold]  Quit"""
+MENU = """[bold]1[/bold]  Find cheap day trips (anywhere)
+[bold]2[/bold]  Search one destination
+[bold]3[/bold]  Settings and API key
+[bold]4[/bold]  Check for updates
+[bold]5[/bold]  Show the guide
+[bold]6[/bold]  Quit"""
 
 
 def run_menu(
@@ -331,7 +378,7 @@ def run_menu(
         if newer:
             console.print(
                 Panel(
-                    f"Version {newer.version} is available. Choose [bold]3[/bold] to update.",
+                    f"Version {newer.version} is available. Choose [bold]4[/bold] to update.",
                     title="Update",
                     padding=(0, 3),
                 )
@@ -339,17 +386,19 @@ def run_menu(
 
     while True:
         console.print(Panel(MENU, title="ESCAPE ENGINE", padding=(1, 3)))
-        choice = Prompt.ask("Choose", choices=["1", "2", "3", "4", "5"], default="1")
+        choice = Prompt.ask("Choose", choices=["1", "2", "3", "4", "5", "6"], default="1")
         if choice == "1":
-            find_trip(console, deps, s, today)
+            find_anywhere(console, deps, s)
         elif choice == "2":
+            find_trip(console, deps, s, today)
+        elif choice == "3":
             console.print(Panel(_summary(s, deps), title="Current settings", padding=(1, 3)))
             if Confirm.ask("Change them?", default=False):
                 s = run_setup(console, deps, s)
-        elif choice == "3":
+        elif choice == "4":
             if do_update(console, deps):
                 return
-        elif choice == "4":
+        elif choice == "5":
             console.print(Panel(GUIDE, title="ESCAPE ENGINE", padding=(1, 3)))
         else:
             console.print("Bye! Safe travels.")

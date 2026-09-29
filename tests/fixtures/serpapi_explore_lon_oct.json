@@ -1,0 +1,1258 @@
+{
+ "_note": "Recorded live SerpApi Google Travel Explore response, 2026-09-29 (London, one way, October, nonstop). Account URLs and thumbnails removed.",
+ "search_metadata": {
+  "id": "6abba0d880c963e39eb4097c",
+  "status": "Success",
+  "created_at": "2026-09-29 11:28:24 UTC",
+  "processed_at": "2026-09-29 11:28:24 UTC",
+  "google_travel_explore_url": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXACggEECAkQApgBAQ",
+  "total_time_taken": 2.19
+ },
+ "search_parameters": {
+  "engine": "google_travel_explore",
+  "hl": "en",
+  "gl": "uk",
+  "type": "2",
+  "departure_id": "LHR,LGW,STN,LTN,SEN,LCY",
+  "month": "10",
+  "stops": 1,
+  "currency": "GBP"
+ },
+ "destinations": [
+  {
+   "destination_id": "/m/02cft",
+   "name": "Dublin",
+   "country": "Ireland",
+   "gps_coordinates": {
+    "latitude": 53.3498053,
+    "longitude": -6.2603097
+   },
+   "destination_airport": {
+    "code": "DUB"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 15,
+   "flight_duration": 80,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMmNmdA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F02cft&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/04llb",
+   "name": "Lisbon",
+   "country": "Portugal",
+   "gps_coordinates": {
+    "latitude": 38.7222524,
+    "longitude": -9.1393366
+   },
+   "destination_airport": {
+    "code": "LIS"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 17,
+   "flight_duration": 170,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNGxsYg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F04llb&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0n2z",
+   "name": "Athens",
+   "country": "Greece",
+   "gps_coordinates": {
+    "latitude": 37.9838096,
+    "longitude": 23.7275388
+   },
+   "destination_airport": {
+    "code": "ATH"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 26,
+   "flight_duration": 215,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ0qCwgDEgcvbS8wbjJ6",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0n2z&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/05qtj",
+   "name": "Paris",
+   "country": "France",
+   "gps_coordinates": {
+    "latitude": 48.8575475,
+    "longitude": 2.3513765
+   },
+   "destination_airport": {
+    "code": "CDG"
+   },
+   "start_date": "2026-10-13",
+   "flight_price": 25,
+   "flight_duration": 80,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTEzagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNXF0ag",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F05qtj&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-13&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0k3p",
+   "name": "Amsterdam",
+   "country": "Netherlands",
+   "gps_coordinates": {
+    "latitude": 52.3675734,
+    "longitude": 4.9041389
+   },
+   "destination_airport": {
+    "code": "AMS"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 27,
+   "flight_duration": 60,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ0qCwgDEgcvbS8wazNw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0k3p&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/06c62",
+   "name": "Rome",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 41.8967068,
+    "longitude": 12.4822025
+   },
+   "destination_airport": {
+    "code": "CIA"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 15,
+   "flight_duration": 145,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNmM2Mg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F06c62&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/01f62",
+   "name": "Barcelona",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 41.3874374,
+    "longitude": 2.1686496
+   },
+   "destination_airport": {
+    "code": "BCN"
+   },
+   "start_date": "2026-10-14",
+   "flight_price": 17,
+   "flight_duration": 125,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTE0agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMWY2Mg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F01f62&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-14&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/09949m",
+   "name": "Istanbul",
+   "country": "T\u00fcrkiye",
+   "gps_coordinates": {
+    "latitude": 41.0082376,
+    "longitude": 28.9783589
+   },
+   "destination_airport": {
+    "code": "SAW"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 60,
+   "flight_duration": 230,
+   "number_of_stops": 0,
+   "airline": "AJet",
+   "airline_code": "VF",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wOTk0OW0",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F09949m&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/056_y",
+   "name": "Madrid",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 40.4167279,
+    "longitude": -3.7032905
+   },
+   "destination_airport": {
+    "code": "MAD"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 15,
+   "flight_duration": 150,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNTZfeQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F056_y&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/070t9",
+   "name": "Santorini",
+   "country": "Greece",
+   "gps_coordinates": {
+    "latitude": 36.3931562,
+    "longitude": 25.4615092
+   },
+   "destination_airport": {
+    "code": "JTR"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 27,
+   "flight_duration": 230,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNzB0OQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F070t9&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/07_pf",
+   "name": "Venice",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 45.440379,
+    "longitude": 12.3159547
+   },
+   "destination_airport": {
+    "code": "VCE"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 15,
+   "flight_duration": 125,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wN19wZg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F07_pf&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0156q",
+   "name": "Berlin",
+   "country": "Germany",
+   "gps_coordinates": {
+    "latitude": 52.5200066,
+    "longitude": 13.404954
+   },
+   "destination_airport": {
+    "code": "BER"
+   },
+   "start_date": "2026-10-08",
+   "flight_price": 20,
+   "flight_duration": 100,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMTU2cQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0156q&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-08&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/031y2",
+   "name": "Florence",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 43.7699685,
+    "longitude": 11.2576706
+   },
+   "destination_airport": {
+    "code": "FLR"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 39,
+   "flight_duration": 130,
+   "number_of_stops": 0,
+   "airline": "Vueling",
+   "airline_code": "VY",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMzF5Mg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F031y2&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/05ywg",
+   "name": "Prague",
+   "country": "Czechia",
+   "gps_coordinates": {
+    "latitude": 50.0755381,
+    "longitude": 14.4378005
+   },
+   "destination_airport": {
+    "code": "PRG"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 25,
+   "flight_duration": 120,
+   "number_of_stops": 0,
+   "airline": "Wizz Air",
+   "airline_code": "W9",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNXl3Zw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F05ywg&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0fhp9",
+   "name": "Vienna",
+   "country": "Austria",
+   "gps_coordinates": {
+    "latitude": 48.2080696,
+    "longitude": 16.3713095
+   },
+   "destination_airport": {
+    "code": "VIE"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 37,
+   "flight_duration": 130,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wZmhwOQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0fhp9&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/095w_",
+   "name": "Budapest",
+   "country": "Hungary",
+   "gps_coordinates": {
+    "latitude": 47.497912,
+    "longitude": 19.040235
+   },
+   "destination_airport": {
+    "code": "BUD"
+   },
+   "start_date": "2026-10-13",
+   "flight_price": 20,
+   "flight_duration": 145,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTEzagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wOTV3Xw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F095w_&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-13&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0947l",
+   "name": "Milan",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 45.468503,
+    "longitude": 9.1824027
+   },
+   "destination_airport": {
+    "code": "BGY"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 14,
+   "flight_duration": 115,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wOTQ3bA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0947l&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0fbwq",
+   "name": "Dubrovnik",
+   "country": "Croatia",
+   "gps_coordinates": {
+    "latitude": 42.6506606,
+    "longitude": 18.0944238
+   },
+   "destination_airport": {
+    "code": "DBV"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 15,
+   "flight_duration": 155,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wZmJ3cQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0fbwq&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/02h6_6p",
+   "name": "Munich",
+   "country": "Germany",
+   "gps_coordinates": {
+    "latitude": 48.1351253,
+    "longitude": 11.5819806
+   },
+   "destination_airport": {
+    "code": "MUC"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 33,
+   "flight_duration": 110,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyARAqDggDEgovbS8wMmg2XzZw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F02h6_6p&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0pmn7",
+   "name": "Porto",
+   "country": "Portugal",
+   "gps_coordinates": {
+    "latitude": 41.1579438,
+    "longitude": -8.6291053
+   },
+   "destination_airport": {
+    "code": "OPO"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 16,
+   "flight_duration": 145,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wcG1uNw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0pmn7&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/09f3c",
+   "name": "Seville",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 37.3890924,
+    "longitude": -5.9844589
+   },
+   "destination_airport": {
+    "code": "SVQ"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 22,
+   "flight_duration": 165,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wOWYzYw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F09f3c&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/04g61",
+   "name": "Luxembourg",
+   "country": "Luxembourg",
+   "gps_coordinates": {
+    "latitude": 49.815273,
+    "longitude": 6.129583
+   },
+   "destination_airport": {
+    "code": "LUX",
+    "location": "Luxembourg",
+    "location_id": "/m/0fq8f"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 15,
+   "flight_duration": 75,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNGc2MQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F04g61&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/02gtbh",
+   "name": "Mykonos",
+   "country": "Greece",
+   "gps_coordinates": {
+    "latitude": 37.4414601,
+    "longitude": 25.3667218
+   },
+   "destination_airport": {
+    "code": "JMK"
+   },
+   "start_date": "2026-10-13",
+   "flight_price": 30,
+   "flight_duration": 230,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTEzagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMmd0Ymg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F02gtbh&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-13&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/052bw",
+   "name": "Manchester",
+   "country": "United Kingdom",
+   "gps_coordinates": {
+    "latitude": 53.4807593,
+    "longitude": -2.2426305
+   },
+   "destination_airport": {
+    "code": "MAN"
+   },
+   "start_date": "2026-10-23",
+   "flight_price": 68,
+   "flight_duration": 55,
+   "number_of_stops": 0,
+   "airline": "British Airways",
+   "airline_code": "BA",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTIzagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNTJidw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F052bw&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-23&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/08966",
+   "name": "Z\u00fcrich",
+   "country": "Switzerland",
+   "gps_coordinates": {
+    "latitude": 47.3768866,
+    "longitude": 8.541694
+   },
+   "destination_airport": {
+    "code": "ZRH"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 25,
+   "flight_duration": 105,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wODk2Ng",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F08966&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0g52z",
+   "name": "Mallorca",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 39.6952629,
+    "longitude": 3.0175712
+   },
+   "destination_airport": {
+    "code": "PMI",
+    "location": "Palma",
+    "location_id": "/m/0jwz5"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 15,
+   "flight_duration": 145,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wZzUyeg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0g52z&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/g/1233f22n",
+   "name": "Naples",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 40.8517746,
+    "longitude": 14.2681244
+   },
+   "destination_airport": {
+    "code": "NAP"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 15,
+   "flight_duration": 160,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAREqDwgDEgsvZy8xMjMzZjIybg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fg%2F1233f22n&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0cltb",
+   "name": "Amalfi",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 40.6338303,
+    "longitude": 14.6027661
+   },
+   "destination_airport": {
+    "code": "NAP",
+    "location": "Naples",
+    "location_id": "/g/1233f22n"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 15,
+   "flight_duration": 160,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "car_duration": 90,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wY2x0Yg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0cltb&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/078lk",
+   "name": "Sardinia",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 40.1208752,
+    "longitude": 9.0128926
+   },
+   "destination_airport": {
+    "code": "OLB",
+    "location": "Olbia",
+    "location_id": "/m/0c2d2"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 17,
+   "flight_duration": 150,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "car_duration": 120,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNzhsaw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F078lk&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0fccy",
+   "name": "Dolomites",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 46.4102117,
+    "longitude": 11.8440351
+   },
+   "destination_airport": {
+    "code": "VCE",
+    "location": "Venice",
+    "location_id": "/m/07_pf"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 15,
+   "flight_duration": 125,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wZmNjeQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0fccy&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/01b85",
+   "name": "Bordeaux",
+   "country": "France",
+   "gps_coordinates": {
+    "latitude": 44.8416106,
+    "longitude": -0.5810938
+   },
+   "destination_airport": {
+    "code": "BOD"
+   },
+   "start_date": "2026-10-13",
+   "flight_price": 22,
+   "flight_duration": 105,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTEzagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMWI4NQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F01b85&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-13&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0h3tv",
+   "name": "Val\u00e8ncia",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 39.4738338,
+    "longitude": -0.3756348
+   },
+   "destination_airport": {
+    "code": "VLC"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 16,
+   "flight_duration": 145,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8waDN0dg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0h3tv&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0491y",
+   "name": "Krak\u00f3w",
+   "country": "Poland",
+   "gps_coordinates": {
+    "latitude": 50.0646501,
+    "longitude": 19.9449799
+   },
+   "destination_airport": {
+    "code": "KRK"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 22,
+   "flight_duration": 140,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNDkxeQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0491y&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0cp6w",
+   "name": "Nice",
+   "country": "France",
+   "gps_coordinates": {
+    "latitude": 43.7101728,
+    "longitude": 7.2619532
+   },
+   "destination_airport": {
+    "code": "NCE"
+   },
+   "start_date": "2026-10-06",
+   "flight_price": 20,
+   "flight_duration": 130,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wY3A2dw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0cp6w&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-06&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/036vk5",
+   "name": "Cinque Terre",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 44.1460939,
+    "longitude": 9.6438793
+   },
+   "destination_airport": {
+    "code": "PSA",
+    "location": "Pisa",
+    "location_id": "/m/064xp"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 15,
+   "flight_duration": 125,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "car_duration": 120,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMzZ2azU",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F036vk5&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/01l4sm",
+   "name": "Lake Como",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 46.0160486,
+    "longitude": 9.2571676
+   },
+   "destination_airport": {
+    "code": "BGY",
+    "location": "Milan",
+    "location_id": "/m/0947l"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 14,
+   "flight_duration": 115,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "car_duration": 90,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMWw0c20",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F01l4sm&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0b1mf",
+   "name": "Salzburg",
+   "country": "Austria",
+   "gps_coordinates": {
+    "latitude": 47.8014154,
+    "longitude": 13.0448441
+   },
+   "destination_airport": {
+    "code": "MUC",
+    "location": "Munich",
+    "location_id": "/m/02h6_6p"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 33,
+   "flight_duration": 110,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "car_duration": 150,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wYjFtZg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0b1mf&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/03hrz",
+   "name": "Hamburg",
+   "country": "Germany",
+   "gps_coordinates": {
+    "latitude": 53.5488282,
+    "longitude": 9.9871703
+   },
+   "destination_airport": {
+    "code": "HAM"
+   },
+   "start_date": "2026-10-10",
+   "flight_price": 16,
+   "flight_duration": 90,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTEwagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wM2hyeg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F03hrz&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0cc3d",
+   "name": "Corfu",
+   "country": "Greece",
+   "gps_coordinates": {
+    "latitude": 39.6242621,
+    "longitude": 19.9216777
+   },
+   "destination_airport": {
+    "code": "CFU",
+    "location": "Corfu",
+    "location_id": "/m/09lgkz"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 22,
+   "flight_duration": 190,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wY2MzZA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0cc3d&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/09jq0",
+   "name": "Granada",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 37.1824607,
+    "longitude": -3.6011676
+   },
+   "destination_airport": {
+    "code": "AGP",
+    "location": "M\u00e1laga",
+    "location_id": "/m/01978d"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 18,
+   "flight_duration": 180,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "car_duration": 90,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wOWpxMA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F09jq0&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/02z0j",
+   "name": "Frankfurt am Main",
+   "country": "Germany",
+   "gps_coordinates": {
+    "latitude": 50.1109221,
+    "longitude": 8.6821267
+   },
+   "destination_airport": {
+    "code": "FRA"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 64,
+   "flight_duration": 90,
+   "number_of_stops": 0,
+   "airline": "Condor",
+   "airline_code": "DE",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMnowag",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F02z0j&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/01nfv9",
+   "name": "French Riviera",
+   "country": "France",
+   "gps_coordinates": {
+    "latitude": 43.2547731,
+    "longitude": 6.6378577
+   },
+   "start_date": "2026-10-06",
+   "number_of_stops": 0,
+   "airline_code": "multi",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMW5mdjk",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F01nfv9&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-06&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0jdtt",
+   "name": "Marseille",
+   "country": "France",
+   "gps_coordinates": {
+    "latitude": 43.3025742,
+    "longitude": 5.3690743
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wamR0dA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0jdtt&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0h2c3",
+   "name": "Ibiza",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 39.0200099,
+    "longitude": 1.4821482
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8waDJjMw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0h2c3&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/081m_",
+   "name": "Warsaw",
+   "country": "Poland",
+   "gps_coordinates": {
+    "latitude": 52.2296756,
+    "longitude": 21.0122287
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wODFtXw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F081m_&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/03902",
+   "name": "Geneva",
+   "country": "Switzerland",
+   "gps_coordinates": {
+    "latitude": 46.2043907,
+    "longitude": 6.1431577
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wMzkwMg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F03902&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0kpgn",
+   "name": "Cappadocia",
+   "country": "T\u00fcrkiye",
+   "gps_coordinates": {
+    "latitude": 38.6586639,
+    "longitude": 34.8531604
+   },
+   "start_date": "2026-10-01",
+   "number_of_stops": 0,
+   "airline_code": "multi",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTAxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wa3Bnbg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0kpgn&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-01&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/09pxc",
+   "name": "Palermo",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 38.1156864,
+    "longitude": 13.3614635
+   },
+   "destination_airport": {
+    "code": "PMO"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 17,
+   "flight_duration": 175,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wOXB4Yw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F09pxc&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/02l6l8",
+   "name": "Donostia / San Sebasti\u00e1n",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 43.318237,
+    "longitude": -1.9817051
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMmw2bDg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F02l6l8&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/01_hhp",
+   "name": "Antalya",
+   "country": "T\u00fcrkiye",
+   "gps_coordinates": {
+    "latitude": 36.8968908,
+    "longitude": 30.7133233
+   },
+   "destination_airport": {
+    "code": "AYT"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 24,
+   "flight_duration": 245,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMV9oaHA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F01_hhp&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0htqt",
+   "name": "Bilbao",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 43.2633799,
+    "longitude": -2.9348121
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8waHRxdA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0htqt&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0m__z",
+   "name": "Galway",
+   "country": "Ireland",
+   "gps_coordinates": {
+    "latitude": 53.274001,
+    "longitude": -9.0512662
+   },
+   "destination_airport": {
+    "code": "SNN",
+    "location": "Shannon",
+    "location_id": "/m/02lpw5"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 13,
+   "flight_duration": 90,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "car_duration": 90,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wbV9feg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0m__z&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/096gm",
+   "name": "Bucharest",
+   "country": "Romania",
+   "gps_coordinates": {
+    "latitude": 44.4267674,
+    "longitude": 26.1025384
+   },
+   "start_date": "2026-10-07",
+   "number_of_stops": 0,
+   "airline_code": "multi",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wOTZnbQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F096gm&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0clz7",
+   "name": "Cork",
+   "country": "Ireland",
+   "gps_coordinates": {
+    "latitude": 51.8985143,
+    "longitude": -8.4756035
+   },
+   "destination_airport": {
+    "code": "ORK"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 13,
+   "flight_duration": 85,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wY2x6Nw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0clz7&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/019858",
+   "name": "Sintra",
+   "country": "Portugal",
+   "gps_coordinates": {
+    "latitude": 38.8233416,
+    "longitude": -9.3229213
+   },
+   "destination_airport": {
+    "code": "LIS",
+    "location": "Lisbon",
+    "location_id": "/m/04llb"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 17,
+   "flight_duration": 170,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMTk4NTg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F019858&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/06wr9",
+   "name": "Santiago de Compostela",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 42.8768606,
+    "longitude": -8.5441729
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wNndyOQ",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F06wr9&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0ftjx",
+   "name": "Sofia",
+   "country": "Bulgaria",
+   "gps_coordinates": {
+    "latitude": 42.6977082,
+    "longitude": 23.3218675
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wZnRqeA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0ftjx&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/07yfd0",
+   "name": "Rhodes",
+   "country": "Greece",
+   "gps_coordinates": {
+    "latitude": 36.4359325,
+    "longitude": 28.2172676
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wN3lmZDA",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F07yfd0&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0hjtg",
+   "name": "Bra\u0219ov",
+   "country": "Romania",
+   "gps_coordinates": {
+    "latitude": 45.6426802,
+    "longitude": 25.5887252
+   },
+   "destination_airport": {
+    "code": "OTP",
+    "location": "Bucharest",
+    "location_id": "/m/096gm"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 21,
+   "flight_duration": 190,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "car_duration": 150,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8waGp0Zw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0hjtg&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/01sptz",
+   "name": "Killarney",
+   "country": "Ireland",
+   "gps_coordinates": {
+    "latitude": 52.0599609,
+    "longitude": -9.504537
+   },
+   "destination_airport": {
+    "code": "KIR",
+    "location": "Kerry",
+    "location_id": "/m/0m_w6"
+   },
+   "start_date": "2026-10-07",
+   "flight_price": 13,
+   "flight_duration": 90,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTA3agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMXNwdHo",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F01sptz&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-07&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0c8lb",
+   "name": "Agrigento",
+   "country": "Italy",
+   "gps_coordinates": {
+    "latitude": 37.3088381,
+    "longitude": 13.5857818
+   },
+   "destination_airport": {
+    "code": "PMO",
+    "location": "Palermo",
+    "location_id": "/m/09pxc"
+   },
+   "start_date": "2026-10-28",
+   "flight_price": 17,
+   "flight_duration": 175,
+   "number_of_stops": 0,
+   "airline": "easyJet",
+   "airline_code": "U2",
+   "car_duration": 150,
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI4agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wYzhsYg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0c8lb&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-28&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/026xgs",
+   "name": "Braga",
+   "country": "Portugal",
+   "gps_coordinates": {
+    "latitude": 41.5454486,
+    "longitude": -8.426507
+   },
+   "destination_airport": {
+    "code": "OPO",
+    "location": "Porto",
+    "location_id": "/m/0pmn7"
+   },
+   "start_date": "2026-10-31",
+   "flight_price": 16,
+   "flight_duration": 145,
+   "number_of_stops": 0,
+   "airline": "Ryanair",
+   "airline_code": "FR",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTMxagcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMjZ4Z3M",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F026xgs&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-31&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/02hvjy",
+   "name": "A Coru\u00f1a",
+   "country": "Spain",
+   "gps_coordinates": {
+    "latitude": 43.3637626,
+    "longitude": -8.4103923
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMmh2ank",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F02hvjy&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0lxg6",
+   "name": "Varna",
+   "country": "Bulgaria",
+   "gps_coordinates": {
+    "latitude": 43.2140504,
+    "longitude": 27.9147333
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wbHhnNg",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0lxg6&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/0fn77",
+   "name": "Chi\u0219in\u0103u",
+   "country": "Moldova",
+   "gps_coordinates": {
+    "latitude": 47.0104529,
+    "longitude": 28.8638103
+   },
+   "destination_airport": {
+    "code": "RMO"
+   },
+   "start_date": "2026-10-29",
+   "flight_price": 32,
+   "flight_duration": 200,
+   "number_of_stops": 0,
+   "airline": "Wizz Air",
+   "airline_code": "W9",
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxpCEgoyMDI2LTEwLTI5agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ4qDAgDEggvbS8wZm43Nw",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F0fn77&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&outbound_date=2026-10-29&stops=1&type=2"
+  },
+  {
+   "destination_id": "/m/020b6w",
+   "name": "Nessebar",
+   "country": "Bulgaria",
+   "gps_coordinates": {
+    "latitude": 42.6592159,
+    "longitude": 27.7355858
+   },
+   "link": "https://www.google.com/travel/explore?hl=en&gl=uk&curr=GBP&tfs=CBwQAxo2agcIARIDTEhSagcIARIDTEdXagcIARIDU1ROagcIARIDTFROagcIARIDU0VOagcIARIDTENZQAFIAXABggELCP___________wGYAQGyAQ8qDQgDEgkvbS8wMjBiNnc",
+   "serpapi_link": "https://serpapi.com/search.json?arrival_id=%2Fm%2F020b6w&currency=GBP&departure_id=LHR%2CLGW%2CSTN%2CLTN%2CSEN%2CLCY&engine=google_travel_explore&gl=uk&hl=en&month=10&stops=1&type=2"
+  }
+ ]
+}

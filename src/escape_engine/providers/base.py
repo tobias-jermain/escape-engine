@@ -43,6 +43,29 @@ class OneWayQuery:
         )
 
 
+@dataclass(frozen=True)
+class ExploreQuery:
+    """Cheapest one-way fares from ``origins`` to anywhere during ``month`` (1-12)."""
+
+    origins: tuple[str, ...]
+    month: int
+    pax: int = 1
+    currency: str = "GBP"
+    nonstop: bool = True
+
+    def cache_key(self) -> str:
+        return "|".join(
+            [
+                "explore",
+                ",".join(sorted(self.origins)),
+                str(self.month),
+                str(self.pax),
+                self.currency,
+                "nonstop" if self.nonstop else "any",
+            ]
+        )
+
+
 @runtime_checkable
 class Provider(Protocol):
     name: str

@@ -121,3 +121,20 @@ class DayTrip(_Frozen):
     reasons: tuple[str, ...] = ()
     """Why the trip was rejected (empty unless ``verdict`` is ``rejected``)."""
     warnings: tuple[str, ...] = ()
+
+
+class Candidate(_Frozen):
+    """A cheap destination found by discovery. Indicative only: never shown as bookable."""
+
+    destination: str
+    """IATA code of the arrival airport."""
+    city: str
+    country: str
+    day: date
+    """The date the discovery source found the cheapest one-way fare."""
+    price: Money
+    """Cheapest one-way fare per person on ``day`` (indicative)."""
+    flight_minutes: int | None = None
+    stops: int = 0
+    airline: str = ""
+    source: str
