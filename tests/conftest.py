@@ -51,3 +51,17 @@ def out_leg() -> Flight:
 def back_leg() -> Flight:
     """KRK 20:40 -> STN 22:05 UK on the same day."""
     return flight("KRK", "STN", at(2026, 11, 2, 20, 40, KRAKOW), at(2026, 11, 2, 22, 5, LONDON))
+
+
+@pytest.fixture(autouse=True)
+def isolated_user_dirs(tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch):  # type: ignore[no-untyped-def]
+    """Keep every test away from the real settings, credentials, update state and cache."""
+    from escape_engine import cache, keystore, settings, update
+
+    home = tmp_path_factory.mktemp("user")
+    monkeypatch.setattr(settings, "settings_path", lambda: home / "settings.json")
+    monkeypatch.setattr(keystore, "credentials_path", lambda: home / "credentials.json")
+    monkeypatch.setattr(update, "_state_path", lambda: home / "update.json")
+    monkeypatch.setattr(cache, "default_path", lambda: home / "cache.sqlite3")
+    monkeypatch.delenv("SERPAPI_API_KEY", raising=False)
+    return home

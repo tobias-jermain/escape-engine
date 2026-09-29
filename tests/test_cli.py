@@ -48,3 +48,11 @@ def test_providers_lists_serpapi() -> None:
     result = runner.invoke(app, ["providers"])
     assert result.exit_code == 0
     assert "serpapi" in result.output
+
+
+def test_version_matches_pyproject() -> None:
+    import tomllib
+    from pathlib import Path
+
+    pyproject = tomllib.loads((Path(__file__).parents[1] / "pyproject.toml").read_text())
+    assert pyproject["project"]["version"] == __version__

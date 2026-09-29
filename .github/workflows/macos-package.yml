@@ -52,13 +52,22 @@ jobs:
           pattern: binary-*
           path: build
           merge-multiple: true
+      - name: Tag must match the app version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          version="$(sed -n 's/^version = "\(.*\)"/\1/p' pyproject.toml)"
+          test "$GITHUB_REF_NAME" = "v$version" || { echo "tag $GITHUB_REF_NAME != v$version"; exit 1; }
       - run: scripts/macos/build_pkg.sh
       - name: Install and smoke-test
         run: |
           sudo installer -pkg build/EscapeEngine-*.pkg -target /
           escape --version
           escape airports LON
-          printf '\n4\n' | escape menu
+          cfg="$HOME/Library/Application Support/escape-engine"
+          mkdir -p "$cfg" && echo '{"setup_done": true, "auto_update_check": false}' > "$cfg/settings.json"
+          printf '5\n' | escape menu
+          escape setup --help > /dev/null
+          escape update --help > /dev/null
           app="/Applications/Escape Engine.app"
           test -x "$app/Contents/MacOS/escape-engine"
           plutil -lint "$app/Contents/Info.plist"
