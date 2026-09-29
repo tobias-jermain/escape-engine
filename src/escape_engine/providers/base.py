@@ -9,6 +9,9 @@ from typing import Protocol, runtime_checkable
 
 from escape_engine.core.models import Flight
 
+# Google Flights accepts a handful of airports per field; stay conservative until verified live.
+MAX_AIRPORTS_PER_QUERY = 7
+
 
 class ProviderError(RuntimeError):
     """A provider call failed (network, quota, bad response)."""
