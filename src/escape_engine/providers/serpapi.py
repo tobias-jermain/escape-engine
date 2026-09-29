@@ -60,11 +60,11 @@ class SerpApiFlights:
     async def one_way(self, query: OneWayQuery) -> Sequence[Flight]:
         if not self.configured():
             raise ProviderConfigError(f"{KEY_ENV} is not set")
-        # Key goes in a header, never the URL, so it cannot leak into logs or error messages.
-        headers = {"Authorization": f"Bearer {self._key}"}
+        # SerpApi only accepts the key as a query parameter, so errors below never echo the URL.
+        params = {**self.params(query), "api_key": self._key}
         client = self._client or httpx.AsyncClient(timeout=self._timeout)
         try:
-            resp = await client.get(ENDPOINT, params=self.params(query), headers=headers)
+            resp = await client.get(ENDPOINT, params=params)
         except httpx.HTTPError as exc:
             raise ProviderError(f"serpapi request failed: {type(exc).__name__}") from None
         finally:

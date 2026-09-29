@@ -65,7 +65,7 @@ def test_missing_key() -> None:
         asyncio.run(SerpApiFlights("").one_way(QUERY))
 
 
-def test_http_call_sends_key_as_header_not_url() -> None:
+def test_http_call_sends_key_as_query_param() -> None:
     seen: list[httpx.Request] = []
 
     def handler(request: httpx.Request) -> httpx.Response:
@@ -77,8 +77,8 @@ def test_http_call_sends_key_as_header_not_url() -> None:
             return len(await SerpApiFlights("secret", client=client).one_way(QUERY))
 
     assert asyncio.run(go()) == 3
-    assert seen[0].headers["Authorization"] == "Bearer secret"
-    assert "secret" not in str(seen[0].url)
+    assert seen[0].url.params["api_key"] == "secret"
+    assert seen[0].url.params["type"] == "2"
 
 
 def test_network_error_does_not_leak_key() -> None:
@@ -92,3 +92,22 @@ def test_network_error_does_not_leak_key() -> None:
     with pytest.raises(ProviderError) as exc:
         asyncio.run(go())
     assert "secret" not in str(exc.value)
+
+
+def test_parse_recorded_live_response() -> None:
+    data = json.loads(
+        (Path(__file__).parent / "fixtures" / "serpapi_live_lon_krk.json").read_text()
+    )
+    query = OneWayQuery(
+        origins=("LHR", "LGW", "STN", "LTN", "SEN", "LCY"),
+        destinations=("KRK",),
+        day=date(2026, 10, 31),
+    )
+    flights = parse(data, query=query, fetched_at=NOW)
+    assert len(flights) == 10
+    cheapest = min(flights, key=lambda f: f.price.amount)
+    assert (cheapest.carrier, cheapest.flight_number, cheapest.price.amount) == ("FR", "2432", 22)
+    assert cheapest.departs_at.isoformat() == "2026-10-31T17:55:00+00:00"
+    assert cheapest.arrives_at.isoformat() == "2026-10-31T21:15:00+01:00"
+    assert {f.carrier for f in flights} == {"FR", "W6", "U2", "BA"}
+    assert all(f.stops == 0 and f.destination == "KRK" for f in flights)

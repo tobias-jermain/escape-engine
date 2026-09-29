@@ -95,7 +95,7 @@ def test_pairs_filters_and_ranks() -> None:
         ("STN", "LTN", Decimal("75")),
     ]
     assert len(result.rejected) == 2
-    assert result.top_reasons() == [("on the ground", 2)]
+    assert result.top_reasons() == [("too little time there", 2)]
     assert result.calls_used == 2
 
 

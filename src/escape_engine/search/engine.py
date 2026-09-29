@@ -57,10 +57,25 @@ class SearchResult:
         return counts.most_common(n)
 
 
+_REASON_LABELS = (
+    ("on the ground", "too little time there"),
+    ("before outbound lands", "return leaves before arrival"),
+    ("arrives before it departs", "bad flight times"),
+    ("before", "departs too early"),
+    ("lands home", "lands home too late"),
+    ("old", "stale fare"),
+    ("stop", "not direct"),
+    ("is over", "over budget"),
+    ("home airport", "not a home airport"),
+    ("return departs", "different return airport"),
+    ("returns to", "different home airport"),
+)
+
+
 def _reason_kind(reason: str) -> str:
-    for marker in ("on the ground", "before", "after", "old", "stop", "over", "home airport"):
+    for marker, label in _REASON_LABELS:
         if marker in reason:
-            return marker
+            return label
     return reason
 
 
