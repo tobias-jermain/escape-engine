@@ -59,9 +59,13 @@ Live prices come from [SerpApi](https://serpapi.com/)'s Google Flights API using
 
 ```bash
 uv run escape setup              # save your key and defaults (or: export SERPAPI_API_KEY=...)
-uv run escape check --from LON --to KRK --date 2026-11-14
-uv run escape check --from LON --to KRK --date 2026-11-14 --return-by 02:30+1 --json
+uv run escape explore                       # cheapest day trips ANYWHERE, next 3 weeks
+uv run escape explore --from STN --max 50 --days 14
+uv run escape check --to KRK --date 2026-11-14   # one destination, one date
 ```
+
+`explore` spends 1 search per calendar month to find cheap destinations, then 2 per destination
+it verifies (default budget 10: about 4 destinations).
 
 Run `uv run escape check --help` for every slider (times, minimum ground time, price cap,
 passengers, overnight, connections, live-call budget).

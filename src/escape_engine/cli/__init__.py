@@ -21,8 +21,9 @@ from escape_engine.core.ranking import SortKey
 from escape_engine.core.rules import fmt_duration
 from escape_engine.fx import fetch_rates
 from escape_engine.providers.base import ProviderError
-from escape_engine.providers.serpapi import KEY_ENV, SerpApiFlights
+from escape_engine.providers.serpapi import KEY_ENV, SerpApiExplore, SerpApiFlights
 from escape_engine.search.engine import BudgetError, Engine, SearchResult
+from escape_engine.search.explore import MAX_FLIGHT_MINUTES, ExploreResult, explore
 
 JSON_SCHEMA = "escape.v1"
 
@@ -183,6 +184,101 @@ def run_search(
         cache.close()
 
 
+def run_explore(
+    *,
+    origins: list[str],
+    rules: TripRules,
+    days: int = 21,
+    pax: int = 1,
+    budget: int = 10,
+    max_flight_minutes: int = MAX_FLIGHT_MINUTES,
+    fresh: bool = False,
+) -> ExploreResult:
+    """Cheapest day trips anywhere in the next ``days`` days (shared by CLI and menu)."""
+    cache = Cache()
+    engine = Engine([SerpApiFlights()], cache=cache, rates=fetch_rates, use_cache=not fresh)
+    try:
+        return asyncio.run(
+            explore(
+                engine,
+                SerpApiExplore(),
+                origins=origins,
+                rules=rules,
+                days=days,
+                pax=pax,
+                budget=budget,
+                max_flight_minutes=max_flight_minutes,
+            )
+        )
+    finally:
+        cache.close()
+
+
+@app.command("explore")
+def explore_cmd(
+    origin: Annotated[
+        str | None, typer.Option("--from", help="Home airports or groups. [default: setup]")
+    ] = None,
+    max_price: Annotated[
+        str | None, typer.Option("--max", help="Return fare per person. [default: setup]")
+    ] = None,
+    days: Annotated[int, typer.Option(min=2, max=90, help="Search the next N days.")] = 21,
+    budget: Annotated[
+        int, typer.Option(min=3, help="Max live searches (discovery + 2 per destination).")
+    ] = 10,
+    pax: Annotated[int, typer.Option(min=1, max=9, help="Passengers.")] = 1,
+    depart_after: Annotated[
+        str | None, typer.Option(help="Earliest departure, HH:MM. [default: setup]")
+    ] = None,
+    return_by: Annotated[
+        str | None, typer.Option(help="Latest landing: 23:59 or 02:30+1. [default: setup]")
+    ] = None,
+    min_ground: Annotated[
+        str | None, typer.Option(help="Min time at destination. [default: setup]")
+    ] = None,
+    max_flight: Annotated[str, typer.Option(help="Longest one-way flight considered.")] = "4h",
+    fresh: Annotated[bool, typer.Option(help="Ignore cached results.")] = False,
+    show_all: Annotated[
+        bool, typer.Option("--all", help="Every valid pair, not the best.")
+    ] = False,
+    as_json: Annotated[bool, typer.Option("--json", help="Machine-readable output.")] = False,
+) -> None:
+    """Cheapest day trips to ANYWHERE in the next few weeks, under your price."""
+    saved = settings.load()
+    try:
+        origins = airports.resolve(origin or saved.home)
+        rules = saved.rules(
+            depart_after=parse_clock(depart_after) if depart_after else None,
+            return_by=parse_return_by(return_by) if return_by else None,
+            min_ground=parse_duration(min_ground) if min_ground else None,
+            max_price=Decimal(max_price) if max_price else None,
+        )
+        max_minutes = int(parse_duration(max_flight).total_seconds() // 60)
+    except (ValueError, LookupError, ArithmeticError) as exc:
+        raise _fail(str(exc)) from None
+    try:
+        result = run_explore(
+            origins=origins,
+            rules=rules,
+            days=days,
+            pax=pax,
+            budget=budget,
+            max_flight_minutes=max_minutes,
+            fresh=fresh,
+        )
+    except (ProviderError, BudgetError, ValueError) as exc:
+        raise _fail(str(exc)) from None
+    if as_json:
+        query = {"from": origins, "to": "anywhere", "days": days, "pax": pax}
+        data = to_json(result, query, rules)
+        data["checked"] = [c.model_dump(mode="json") for c in result.checked]
+        data["shortlist_size"] = result.shortlist_size
+        data["outside_window"] = result.outside_window
+        typer.echo(json.dumps(data, indent=2))
+    else:
+        render(result, show_all=show_all)
+
+
 @app.command("menu")
 def menu_cmd() -> None:
     """Guided, step-by-step menu (what the Mac app opens)."""
@@ -229,7 +325,7 @@ def to_json(result: SearchResult, query: dict[str, Any], rules: TripRules) -> di
 
 def _table(title: str, trips: list[DayTrip]) -> Table:
     table = Table(title=title, title_justify="left")
-    for col in ("Price", "Out", "Back", "Usable", "Notes"):
+    for col in ("Price", "Date", "To", "Out", "Back", "Usable", "Notes"):
         table.add_column(col)
     for t in trips:
         o, b = t.outbound, t.inbound
@@ -237,6 +333,8 @@ def _table(title: str, trips: list[DayTrip]) -> Table:
         lands = b.arrives_at.astimezone(airports.timezone(b.destination))
         table.add_row(
             str(t.price),
+            f"{t.trip_date:%a %d %b}",
+            f"{airports.get(o.destination).city} ({o.destination})",
             f"{o.origin} {leaves:%H:%M} {o.carrier}{o.flight_number}",
             f"{b.destination} {lands:%H:%M} {b.carrier}{b.flight_number}",
             fmt_duration(t.usable_time),
@@ -245,14 +343,51 @@ def _table(title: str, trips: list[DayTrip]) -> Table:
     return table
 
 
-def render(result: SearchResult, *, explain: bool = False, console: Console | None = None) -> None:
+def best_per_destination(trips: list[DayTrip]) -> list[DayTrip]:
+    """Keep the first (best-ranked) trip for each destination and date."""
+    seen: set[tuple[str, date]] = set()
+    out = []
+    for t in trips:
+        key = (t.outbound.destination, t.trip_date)
+        if key not in seen:
+            seen.add(key)
+            out.append(t)
+    return out
+
+
+def render(
+    result: SearchResult,
+    *,
+    explain: bool = False,
+    show_all: bool = True,
+    console: Console | None = None,
+) -> None:
     console = console or Console()
-    if result.trips:
-        console.print(_table("Day trips", result.trips))
+    trips = result.trips if show_all else best_per_destination(result.trips)
+    just_over = result.just_over
+    if not show_all:
+        # A place that already has a trip under budget doesn't need a pricier "just over" one.
+        covered = {(t.outbound.destination, t.trip_date) for t in trips}
+        just_over = [
+            t
+            for t in best_per_destination(result.just_over)
+            if (t.outbound.destination, t.trip_date) not in covered
+        ]
+    if trips:
+        console.print(_table("Day trips", trips))
     else:
         console.print("No valid day trips under the limit.")
-    if result.just_over:
-        console.print(_table("Just over", result.just_over))
+    if just_over:
+        console.print(_table("Just over", just_over))
+    if isinstance(result, ExploreResult):
+        names = ", ".join(f"{c.city} {c.day:%d %b}" for c in result.checked) or "none"
+        console.print(
+            f"Checked {len(result.checked)} of {result.shortlist_size} cheap destinations: {names}"
+        )
+        if result.outside_window:
+            console.print(
+                f"{result.outside_window} more were cheapest outside your dates (not checked)."
+            )
     if result.rejected:
         reasons = ", ".join(f"{k} ({n})" for k, n in result.top_reasons())
         console.print(f"{len(result.rejected)} pairs rejected: {reasons}")

@@ -6,7 +6,7 @@ The user supplies their own key: ``SERPAPI_API_KEY`` in the environment, or save
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from typing import Any
 
@@ -14,8 +14,13 @@ import httpx
 
 from escape_engine import keystore
 from escape_engine.core import airports
-from escape_engine.core.models import Flight, Money
-from escape_engine.providers.base import OneWayQuery, ProviderConfigError, ProviderError
+from escape_engine.core.models import Candidate, Flight, Money
+from escape_engine.providers.base import (
+    ExploreQuery,
+    OneWayQuery,
+    ProviderConfigError,
+    ProviderError,
+)
 
 ENDPOINT = "https://serpapi.com/search.json"
 ACCOUNT_ENDPOINT = "https://serpapi.com/account.json"
@@ -58,14 +63,13 @@ class SerpApiFlights:
             params["stops"] = "1"
         return params
 
-    async def one_way(self, query: OneWayQuery) -> Sequence[Flight]:
+    async def _search(self, params: dict[str, str]) -> dict[str, Any]:
+        """One SerpApi call. Errors never include the URL, which carries the key."""
         if not self.configured():
             raise ProviderConfigError(f"{KEY_ENV} is not set")
-        # SerpApi only accepts the key as a query parameter, so errors below never echo the URL.
-        params = {**self.params(query), "api_key": self._key}
         client = self._client or httpx.AsyncClient(timeout=self._timeout)
         try:
-            resp = await client.get(ENDPOINT, params=params)
+            resp = await client.get(ENDPOINT, params={**params, "api_key": self._key})
         except httpx.HTTPError as exc:
             raise ProviderError(f"serpapi request failed: {type(exc).__name__}") from None
         finally:
@@ -79,7 +83,40 @@ class SerpApiFlights:
             raise ProviderError(f"serpapi returned HTTP {resp.status_code}, unexpected body")
         if resp.status_code != 200 and not data.get("error"):
             raise ProviderError(f"serpapi returned HTTP {resp.status_code}")
+        return data
+
+    async def one_way(self, query: OneWayQuery) -> Sequence[Flight]:
+        data = await self._search(self.params(query))
         return parse(data, query=query, fetched_at=datetime.now(UTC))
+
+
+class SerpApiExplore(SerpApiFlights):
+    """Google Travel Explore: cheapest one-way fare per destination for a month (discovery).
+
+    Docs: https://serpapi.com/google-travel-explore-api
+    """
+
+    name = "serpapi-explore"
+    live = False  # indicative prices, only used to choose what to verify
+
+    def explore_params(self, query: ExploreQuery) -> dict[str, str]:
+        params = {
+            "engine": "google_travel_explore",
+            "type": "2",
+            "departure_id": ",".join(query.origins),
+            "month": str(query.month),
+            "adults": str(query.pax),
+            "currency": query.currency,
+            "hl": "en",
+            "gl": "uk",
+        }
+        if query.nonstop:
+            params["stops"] = "1"
+        return params
+
+    async def explore(self, query: ExploreQuery) -> list[Candidate]:
+        data = await self._search(self.explore_params(query))
+        return parse_explore(data, currency=query.currency)
 
 
 def check_key(api_key: str, client: httpx.Client | None = None) -> dict[str, Any]:
@@ -161,3 +198,41 @@ def _parse_option(
 def _local(text: str, airport: str) -> datetime:
     """``"2026-11-02 06:30"`` at ``airport`` -> aware datetime in that airport's timezone."""
     return datetime.strptime(text, "%Y-%m-%d %H:%M").replace(tzinfo=airports.timezone(airport))
+
+
+def parse_explore(data: Mapping[str, Any], *, currency: str) -> list[Candidate]:
+    """Turn a Travel Explore response into one ``Candidate`` per airport (cheapest wins)."""
+    error = data.get("error")
+    if error:
+        if _NO_RESULTS in str(error):
+            return []
+        raise ProviderError(f"serpapi: {error}")
+    best: dict[str, Candidate] = {}
+    for d in data.get("destinations", []):
+        code = str((d.get("destination_airport") or {}).get("code", "")).upper()
+        price, day = d.get("flight_price"), d.get("start_date")
+        if not code or price is None or not day:
+            continue
+        try:
+            airport = airports.get(code)
+            candidate = Candidate(
+                destination=airport.iata,
+                city=str(
+                    (d.get("destination_airport") or {}).get("location")
+                    or d.get("name")
+                    or airport.city
+                ),
+                country=str(d.get("country") or airport.country),
+                day=date.fromisoformat(str(day)),
+                price=Money(amount=Decimal(str(price)), currency=currency),
+                flight_minutes=d.get("flight_duration"),
+                stops=int(d.get("number_of_stops") or 0),
+                airline=str(d.get("airline_code") or ""),
+                source=SerpApiExplore.name,
+            )
+        except (LookupError, ValueError):
+            continue  # unknown airport or malformed row: skip rather than guess
+        kept = best.get(code)
+        if kept is None or (candidate.price.amount, candidate.day) < (kept.price.amount, kept.day):
+            best[code] = candidate
+    return sorted(best.values(), key=lambda c: (c.price.amount, c.day))

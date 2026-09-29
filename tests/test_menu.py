@@ -53,7 +53,7 @@ def test_first_run_guide_then_setup(monkeypatch: pytest.MonkeyPatch, tmp_path: P
     d = deps(tmp_path)
     con, buf = console()
     # enter, key (hidden), home, price, depart, return, min time, updates, then quit
-    feed(monkeypatch, ["", "my-key", "UK", "60", "", "02:30+1", "", "n", "5"])
+    feed(monkeypatch, ["", "my-key", "UK", "60", "", "02:30+1", "", "n", "6"])
     run_menu(console=con, deps=d, today=TODAY)
     out = buf.getvalue()
     assert "Welcome to Escape Engine" in out
@@ -70,7 +70,7 @@ def test_first_run_guide_then_setup(monkeypatch: pytest.MonkeyPatch, tmp_path: P
     )
 
     con, buf = console()
-    feed(monkeypatch, ["5"])
+    feed(monkeypatch, ["6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "Welcome to Escape Engine" not in buf.getvalue()
 
@@ -85,7 +85,7 @@ def test_setup_rejects_bad_answers_and_bad_key(
     con, buf = console()
     feed(
         monkeypatch,
-        ["", "wrong", "n", "", "XXX", "LON", "-5", "75", "5am", "05:30", "", "", "", "5"],
+        ["", "wrong", "n", "", "XXX", "LON", "-5", "75", "5am", "05:30", "", "", "", "6"],
     )
     run_menu(console=con, deps=d, today=TODAY)
     out = buf.getvalue()
@@ -99,7 +99,7 @@ def test_env_key_is_used_without_asking(monkeypatch: pytest.MonkeyPatch, tmp_pat
     monkeypatch.setenv("SERPAPI_API_KEY", "from-env")
     d = deps(tmp_path)
     con, buf = console()
-    feed(monkeypatch, ["", "", "", "", "", "", "", "5"])
+    feed(monkeypatch, ["", "", "", "", "", "", "", "6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "from the SERPAPI_API_KEY environment variable" in buf.getvalue()
 
@@ -116,7 +116,7 @@ def test_find_trip_uses_saved_settings(monkeypatch: pytest.MonkeyPatch, tmp_path
 
     monkeypatch.setattr(cli, "run_search", fake_search)
     con, buf = console()
-    feed(monkeypatch, ["1", "", "Kraków", "", "", "y", "5"])
+    feed(monkeypatch, ["2", "", "Kraków", "", "", "y", "6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert len(calls) == 1
     call = calls[0]
@@ -134,7 +134,7 @@ def test_find_trip_without_key(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) 
     d = deps(tmp_path)
     done(d)
     con, buf = console()
-    feed(monkeypatch, ["1", "5"])
+    feed(monkeypatch, ["2", "1", "6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "An API key is needed first" in buf.getvalue()
 
@@ -151,7 +151,7 @@ def test_update_downloads_and_opens_installer(
     )
     done(d)
     con, buf = console()
-    feed(monkeypatch, ["3", ""])  # menu closes itself after opening the installer
+    feed(monkeypatch, ["4", ""])  # menu closes itself after opening the installer
     run_menu(console=con, deps=d, today=TODAY)
     assert opened == [tmp_path / "E.pkg"]
     assert "The installer is open" in buf.getvalue()
@@ -161,13 +161,13 @@ def test_update_up_to_date_and_dev_copy(monkeypatch: pytest.MonkeyPatch, tmp_pat
     d = deps(tmp_path, latest_release=lambda: None)
     done(d)
     con, buf = console()
-    feed(monkeypatch, ["3", "5"])
+    feed(monkeypatch, ["4", "6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "No releases have been published yet" in buf.getvalue()
 
     d = deps(tmp_path, latest_release=lambda: NEWER, installed_via_pkg=lambda: False)
     con, buf = console()
-    feed(monkeypatch, ["3", "5"])
+    feed(monkeypatch, ["4", "6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "git pull" in buf.getvalue()
 
@@ -176,13 +176,13 @@ def test_daily_update_notice(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) ->
     d = deps(tmp_path, update_if_due=lambda: NEWER)
     done(d)
     con, buf = console()
-    feed(monkeypatch, ["5"])
+    feed(monkeypatch, ["6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "Version 9.0.0 is available" in buf.getvalue()
 
     done(d, auto_update_check=False)
     con, buf = console()
-    feed(monkeypatch, ["5"])
+    feed(monkeypatch, ["6"])
     run_menu(console=con, deps=d, today=TODAY)
     assert "is available" not in buf.getvalue()
 
@@ -190,3 +190,28 @@ def test_daily_update_notice(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) ->
 def test_next_saturday() -> None:
     assert next_saturday(date(2026, 9, 29)) == date(2026, 10, 3)
     assert next_saturday(date(2026, 10, 3)) == date(2026, 10, 10)
+
+
+def test_find_anywhere_flow(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    from escape_engine.search.explore import ExploreResult
+
+    d = deps(tmp_path)
+    done(d, home="LON", max_price="75")
+    keystore.put("SERPAPI_API_KEY", "k", d.credentials_file)
+    calls: list[dict[str, Any]] = []
+
+    def fake_explore(**kw: Any) -> ExploreResult:
+        calls.append(kw)
+        return ExploreResult(trips=[], just_over=[], rejected=[], calls_used=9, shortlist_size=15)
+
+    monkeypatch.setattr(cli, "run_explore", fake_explore)
+    con, buf = console()
+    feed(monkeypatch, ["1", "", "50", "400", "14", "y", "6"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert len(calls) == 1
+    assert calls[0]["origins"][:2] == ["LHR", "LGW"]
+    assert str(calls[0]["rules"].max_price) == "50"
+    assert (calls[0]["days"], calls[0]["budget"]) == (14, 10)
+    out = buf.getvalue()
+    assert "choose between 2 and 90 days" in out
+    assert "Checked 0 of 15 cheap destinations" in out

@@ -113,6 +113,30 @@ class Engine:
         results = await asyncio.gather(*(one(p) for p in self.providers))
         return _merge(f for batch in results for f in batch)
 
+    def _queries(
+        self, origins: Sequence[str], destination: str, day: date, rules: TripRules, pax: int
+    ) -> tuple[list[OneWayQuery], list[OneWayQuery]]:
+        return_days = [day, day + timedelta(days=1)] if rules.overnight else [day]
+        home = tuple(origins)
+        chunks = [
+            home[i : i + MAX_AIRPORTS_PER_QUERY]
+            for i in range(0, len(home), MAX_AIRPORTS_PER_QUERY)
+        ]
+        dest = (destination,)
+        nonstop = not rules.allow_connections
+        out_qs = [OneWayQuery(c, dest, day, pax, rules.currency, nonstop) for c in chunks]
+        back_qs = [
+            OneWayQuery(dest, c, d, pax, rules.currency, nonstop)
+            for d in return_days
+            for c in chunks
+        ]
+        return out_qs, back_qs
+
+    def calls_needed(self, origins: Sequence[str], rules: TripRules) -> int:
+        """Most live calls one ``check`` can spend (cache hits make it cheaper)."""
+        out_qs, back_qs = self._queries(origins, "XXX", date(2000, 1, 1), rules, 1)
+        return len(self.providers) * (len(out_qs) + len(back_qs))
+
     async def check(
         self,
         *,
@@ -130,26 +154,13 @@ class Engine:
             raise ProviderError("no live provider is configured (set SERPAPI_API_KEY)")
         now = now or datetime.now(UTC)
         spend = Budget(budget)
-        # Each query costs one call per provider; check the whole plan fits before spending any.
-        return_days = [day, day + timedelta(days=1)] if rules.overnight else [day]
-        home = tuple(origins)
-        chunks = [
-            home[i : i + MAX_AIRPORTS_PER_QUERY]
-            for i in range(0, len(home), MAX_AIRPORTS_PER_QUERY)
-        ]
-        dest = (destination,)
-        nonstop = not rules.allow_connections
-        out_qs = [OneWayQuery(c, dest, day, pax, rules.currency, nonstop) for c in chunks]
-        back_qs = [
-            OneWayQuery(dest, c, d, pax, rules.currency, nonstop)
-            for d in return_days
-            for c in chunks
-        ]
-        needed = len(self.providers) * (len(out_qs) + len(back_qs))
+        out_qs, back_qs = self._queries(origins, destination, day, rules, pax)
+        needed = self.calls_needed(origins, rules)
         if needed > budget:
             raise BudgetError(
                 f"needs up to {needed} live calls, budget is {budget} (raise --budget)"
             )
+        home = tuple(origins)
 
         errors: list[str] = []
         batches = await asyncio.gather(
