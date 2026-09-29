@@ -118,7 +118,7 @@ escape_engine/
   api/               # (later) FastAPI, same models = same JSON contract
 ```
 
-**Tech:** Python 3.12+, `uv`, `httpx` (async), `pydantic` v2, `typer` + `rich`,
+**Tech:** Python 3.11+, `uv`, `httpx` (async), `pydantic` v2, `typer` + `rich`,
 `zoneinfo`, SQLite. Runs on macOS/Linux; nothing in the stack blocks Windows.
 
 **Worldwide-ready from day one:** home airports, home currency, home timezone and
@@ -156,12 +156,11 @@ escape config init         # write default config
 
 ---
 
-## 6. Open questions
+## 6. Resolved follow-ups
 
-1. **Discovery source:** OK to use Travelpayouts (free account, cached data) *only*
-   to choose which routes to check live?
-2. **Near-misses:** "£75 isn't hard-stuck". Show a separate "just over" section
-   (e.g. up to +20%), or treat `--max` as a strict cut-off?
-3. **Default live-call budget per run:** e.g. 10 calls (≈5 destination-dates)?
-4. **Minimum add-ons:** if a provider only returns fares that include a cabin bag,
-   show them and flag it, or drop them?
+| Topic | Decision |
+|---|---|
+| Discovery source | Travelpayouts is used **only** to choose which routes to check live. Its prices are never shown as bookable. |
+| Near-misses | Show a separate **"just over"** section, up to `--stretch` (default +20%) above `--max`. |
+| Live-call budget | `--budget` default **10** calls per run (about 5 destination-dates). |
+| Bundled add-ons | Fares that include extras (e.g. a cabin bag) are **kept but carry a warning**. |
