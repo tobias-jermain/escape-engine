@@ -11,6 +11,18 @@ This repo serves as the core engine for finding quick, cheap and perfect extreme
 
 Early development. See [`docs/PLAN.md`](docs/PLAN.md) for the design and milestones.
 
+## Install on your Mac
+
+1. Download **EscapeEngine-x.y.z.pkg** from the repo's **Releases** page (or from the
+   latest "macOS package" run under **Actions** > Artifacts).
+2. Double-click it and follow the installer. One installer works on Apple Silicon and Intel Macs.
+3. **Escape Engine** opens with a large-text guide. Later, open it any time from Applications
+   or Launchpad, or type `escape` in Terminal.
+
+The installer isn't signed with an Apple Developer ID yet. If macOS says it "can't be opened",
+go to **System Settings > Privacy & Security** and click **Open Anyway**. The first time the
+app runs, macOS also asks to let it control Terminal: click **OK**.
+
 ## Development
 
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.11+ (macOS or Linux).
@@ -19,9 +31,24 @@ Requires [uv](https://docs.astral.sh/uv/) and Python 3.11+ (macOS or Linux).
 uv sync
 uv run escape --version
 uv run escape airports UK        # expand an airport group
-uv run pytest                    # tests
+uv run escape providers          # which flight data sources are ready
+uv run pytest                    # offline tests
+uv run pytest -m live            # live provider tests (spend API quota)
 uv run ruff check . && uv run mypy
 ```
+
+## Finding day trips
+
+Live prices come from [SerpApi](https://serpapi.com/)'s Google Flights API using your own key:
+
+```bash
+export SERPAPI_API_KEY="..."     # e.g. in ~/.zshrc
+uv run escape check --from LON --to KRK --date 2026-11-14
+uv run escape check --from LON --to KRK --date 2026-11-14 --return-by 02:30+1 --json
+```
+
+Run `uv run escape check --help` for every slider (times, minimum ground time, price cap,
+passengers, overnight, connections, live-call budget).
 
 ## Data
 

@@ -50,7 +50,7 @@ endpoints (e.g. scraping ryanair.com's internal APIs) are **excluded**.
 
 | Provider | Role | Live? | Free tier | Notes |
 |---|---|---|---|---|
-| **SerpApi – Google Flights** | Primary *verifier* | Yes | ~100 searches/month | Covers low-cost carriers through Google Flights. Supports multiple departure airports in one call (`STN,LTN,LGW,…`) and one-way (`type=2`). User supplies the key. |
+| **SerpApi – Google Flights** | Primary *verifier* | Yes | 250 searches/month (verified) | Covers low-cost carriers through Google Flights. Supports multiple departure airports in one call (`STN,LTN,LGW,…`) and one-way (`type=2`). User supplies the key. |
 | **SerpApi – Google Travel Explore** | Discovery ("anywhere") | Yes | Same quota | Finds cheap destinations from an origin; the candidates are then verified. |
 | **Travelpayouts (Aviasales Data API)** | Free *discovery* | No — cached, up to ~48h old | Free, generous rate limit | Only used to **choose which routes to check**. Its prices are never shown as bookable. |
 | **Duffel** | Possible second verifier | Yes | Free to search, charges per order | Ryanair coverage and personal-account live access **to verify** before building. |
@@ -83,7 +83,7 @@ endpoints (e.g. scraping ryanair.com's internal APIs) are **excluded**.
 - **Freshness:** every fare has a `fetched_at` time. Nothing older than 3h is shown
   as bookable. The cache TTL is ≤ 3h.
 
-> ⚠️ **Quota reality:** 100 free searches ≈ 50 destination-date pairs per month.
+> ⚠️ **Quota reality:** 250 free searches ≈ 125 destination-date pairs per month.
 > Mode (c), "a month, anywhere, from all of London", only fits the free tier because
 > discovery narrows it down first. If that turns out too tight, a paid SerpApi tier
 > or a second free verifier is the fix. No redesign needed.

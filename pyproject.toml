@@ -5,7 +5,10 @@ description = "Engine for finding ultra-cheap extreme day-trip flights."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "httpx>=0.28.1",
+    "platformdirs>=4.12.1",
     "pydantic>=2.7",
+    "rich>=15.0.0",
     "typer>=0.12",
 ]
 
@@ -42,3 +45,5 @@ files = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "-m 'not live'"
+markers = ["live: calls real provider APIs and spends quota (run with -m live)"]

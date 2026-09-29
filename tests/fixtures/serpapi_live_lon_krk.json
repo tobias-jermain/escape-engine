@@ -1,0 +1,736 @@
+{
+ "_note": "Recorded live SerpApi response, 2026-09-29 (London -> KRK, one way, 31 Oct 2026). Account URLs removed.",
+ "search_metadata": {
+  "id": "6abb96f86feec4459ae29976",
+  "status": "Success",
+  "created_at": "2026-09-29 10:46:16 UTC",
+  "processed_at": "2026-09-29 10:46:16 UTC",
+  "google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=uk&curr=GBP&tfs=CBwQAhpNEgoyMDI2LTEwLTMxKABqBwgBEgNMSFJqBwgBEgNMR1dqBwgBEgNTVE5qBwgBEgNMVE5qBwgBEgNTRU5qBwgBEgNMQ1lyBwgBEgNLUktAAUgBcAGYAQI&tfu=EgQIARAB",
+  "total_time_taken": 2.95
+ },
+ "search_parameters": {
+  "engine": "google_flights",
+  "hl": "en",
+  "gl": "uk",
+  "type": "2",
+  "departure_id": "LHR,LGW,STN,LTN,SEN,LCY",
+  "arrival_id": "KRK",
+  "outbound_date": "2026-10-31",
+  "adults": 1,
+  "stops": 1,
+  "currency": "GBP",
+  "show_hidden": true
+ },
+ "best_flights": [
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Stansted Airport",
+      "id": "STN",
+      "time": "2026-10-31 17:55"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 21:15"
+     },
+     "duration": 140,
+     "airplane": "Boeing 737",
+     "airline": "Ryanair",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+     "travel_class": "Economy",
+     "flight_number": "FR 2432",
+     "legroom": "30 in",
+     "extensions": [
+      "Average legroom (30 in)",
+      "Carbon emissions estimate: 117 kg"
+     ],
+     "often_delayed_by_over_30_min": true
+    }
+   ],
+   "total_duration": 140,
+   "carbon_emissions": {
+    "this_flight": 118000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 7
+   },
+   "price": 22,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pHVWpJME16SWFDZ2k1RUJBQ0dnTkhRbEE0SEhEZ0ZRPT0iLFtbIlNUTiIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIkZSIiwiMjQzMiJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Stansted Airport",
+      "id": "STN",
+      "time": "2026-10-31 08:25"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 11:45"
+     },
+     "duration": 140,
+     "airplane": "Boeing 737MAX 8 Passenger",
+     "airline": "Ryanair",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+     "travel_class": "Economy",
+     "flight_number": "FR 2499",
+     "legroom": "28 in",
+     "extensions": [
+      "Below average legroom (28 in)",
+      "Carbon emissions estimate: 99 kg"
+     ],
+     "often_delayed_by_over_30_min": true,
+     "plane_and_crew_by": "Ryanair Sun"
+    }
+   ],
+   "total_duration": 140,
+   "carbon_emissions": {
+    "this_flight": 100000,
+    "typical_for_this_route": 110000,
+    "difference_percent": -9
+   },
+   "price": 24,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pHVWpJME9Ua2FDZ2plRWhBQ0dnTkhRbEE0SEhEakdBPT0iLFtbIlNUTiIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIkZSIiwiMjQ5OSJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Luton Airport",
+      "id": "LTN",
+      "time": "2026-10-31 06:05"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 09:30"
+     },
+     "duration": 145,
+     "airplane": "Boeing 737",
+     "airline": "Ryanair",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+     "travel_class": "Economy",
+     "flight_number": "FR 2351",
+     "legroom": "30 in",
+     "extensions": [
+      "Average legroom (30 in)",
+      "Carbon emissions estimate: 121 kg"
+     ]
+    }
+   ],
+   "total_duration": 145,
+   "carbon_emissions": {
+    "this_flight": 121000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 10
+   },
+   "price": 27,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pHVWpJek5URWFDZ2k3RkJBQ0dnTkhRbEE0SEhDSUd3PT0iLFtbIkxUTiIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIkZSIiwiMjM1MSJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Stansted Airport",
+      "id": "STN",
+      "time": "2026-10-31 15:00"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 18:20"
+     },
+     "duration": 140,
+     "airplane": "Boeing 737",
+     "airline": "Ryanair",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+     "travel_class": "Economy",
+     "flight_number": "FR 2362",
+     "legroom": "30 in",
+     "extensions": [
+      "Average legroom (30 in)",
+      "Carbon emissions estimate: 117 kg"
+     ]
+    }
+   ],
+   "total_duration": 140,
+   "carbon_emissions": {
+    "this_flight": 118000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 7
+   },
+   "price": 27,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pHVWpJek5qSWFDZ2lMRlJBQ0dnTkhRbEE0SEhEeEd3PT0iLFtbIlNUTiIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIkZSIiwiMjM2MiJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Luton Airport",
+      "id": "LTN",
+      "time": "2026-10-31 16:30"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 19:55"
+     },
+     "duration": 145,
+     "airplane": "Boeing 737",
+     "airline": "Ryanair",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+     "travel_class": "Economy",
+     "flight_number": "FR 1813",
+     "legroom": "30 in",
+     "extensions": [
+      "Average legroom (30 in)",
+      "Carbon emissions estimate: 121 kg"
+     ]
+    }
+   ],
+   "total_duration": 145,
+   "carbon_emissions": {
+    "this_flight": 121000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 10
+   },
+   "price": 28,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pHVWpFNE1UTWFDZ2p2RlJBQ0dnTkhRbEE0SEhEMkhBPT0iLFtbIkxUTiIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIkZSIiwiMTgxMyJdXV0="
+  }
+ ],
+ "other_flights": [
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Stansted Airport",
+      "id": "STN",
+      "time": "2026-10-31 10:15"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 13:35"
+     },
+     "duration": 140,
+     "airplane": "Boeing 737",
+     "airline": "Ryanair",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+     "travel_class": "Economy",
+     "flight_number": "FR 2434",
+     "legroom": "30 in",
+     "extensions": [
+      "Average legroom (30 in)",
+      "Carbon emissions estimate: 117 kg"
+     ],
+     "often_delayed_by_over_30_min": true
+    }
+   ],
+   "total_duration": 140,
+   "carbon_emissions": {
+    "this_flight": 118000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 7
+   },
+   "price": 35,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pHVWpJME16UWFDZ2lyR3hBQ0dnTkhRbEE0SEhDVEpBPT0iLFtbIlNUTiIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIkZSIiwiMjQzNCJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Gatwick Airport",
+      "id": "LGW",
+      "time": "2026-10-31 20:25"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 23:50"
+     },
+     "duration": 145,
+     "airline": "Wizz Air",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
+     "travel_class": "Economy",
+     "flight_number": "W6 2010"
+    }
+   ],
+   "total_duration": 145,
+   "carbon_emissions": {
+    "typical_for_this_route": 110000
+   },
+   "price": 42,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pYTmpJd01UQWFDZ2puSUJBQ0dnTkhRbEE0SEhDeEt3PT0iLFtbIkxHVyIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIlc2IiwiMjAxMCJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Gatwick Airport",
+      "id": "LGW",
+      "time": "2026-10-31 08:25"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 11:50"
+     },
+     "duration": 145,
+     "airplane": "Airbus A321neo",
+     "airline": "Wizz Air",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
+     "travel_class": "Economy",
+     "flight_number": "W6 2008",
+     "extensions": [
+      "Carbon emissions estimate: 96 kg"
+     ],
+     "often_delayed_by_over_30_min": true
+    }
+   ],
+   "total_duration": 145,
+   "carbon_emissions": {
+    "this_flight": 97000,
+    "typical_for_this_route": 110000,
+    "difference_percent": -12
+   },
+   "price": 46,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pYTmpJd01EZ2FDZ2ozSXhBQ0dnTkhRbEE0SEhEQ0x3PT0iLFtbIkxHVyIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIlc2IiwiMjAwOCJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "London Gatwick Airport",
+      "id": "LGW",
+      "time": "2026-10-31 09:00"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 12:30"
+     },
+     "duration": 150,
+     "airplane": "Airbus A319",
+     "airline": "easyJet",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/U2.png",
+     "travel_class": "Economy",
+     "flight_number": "U2 8821",
+     "extensions": [
+      "Carbon emissions estimate: 132 kg"
+     ]
+    }
+   ],
+   "total_duration": 150,
+   "carbon_emissions": {
+    "this_flight": 132000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 20
+   },
+   "price": 57,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/U2.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1pWTWpnNE1qRWFDZ2lSTEJBQ0dnTkhRbEE0SEhDdk9nPT0iLFtbIkxHVyIsIjIwMjYtMTAtMzEiLCJLUksiLG51bGwsIlUyIiwiODgyMSJdXV0="
+  },
+  {
+   "flights": [
+    {
+     "departure_airport": {
+      "name": "Heathrow Airport",
+      "id": "LHR",
+      "time": "2026-10-31 06:05"
+     },
+     "arrival_airport": {
+      "name": "John Paul II Krak\u00f3w Balice International Airport",
+      "id": "KRK",
+      "time": "2026-10-31 09:40"
+     },
+     "duration": 155,
+     "airplane": "Airbus A320",
+     "airline": "British Airways",
+     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/BA.png",
+     "travel_class": "Economy",
+     "flight_number": "BA 872",
+     "legroom": "29 in",
+     "extensions": [
+      "Below average legroom (29 in)",
+      "Wi-Fi for a fee",
+      "In-seat USB outlet",
+      "Carbon emissions estimate: 129 kg"
+     ]
+    }
+   ],
+   "total_duration": 155,
+   "carbon_emissions": {
+    "this_flight": 129000,
+    "typical_for_this_route": 110000,
+    "difference_percent": 17
+   },
+   "price": 101,
+   "type": "One way",
+   "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/BA.png",
+   "booking_token": "WyJDalJJV2xSTU5tRnBWMWhXWW05QlJVSjRZWGRDUnkwdExTMHRMUzB0TFc5NWFHMHhOMEZCUVVGQlIzRTNiSFpyU1dSa1FTMUJFZ1ZDUVRnM01ob0tDTWRPRUFJYUEwZENVRGdjY1BKbiIsW1siTEhSIiwiMjAyNi0xMC0zMSIsIktSSyIsbnVsbCwiQkEiLCI4NzIiXV1d"
+  }
+ ],
+ "price_insights": {
+  "lowest_price": 22,
+  "price_level": "typical",
+  "typical_price_range": [
+   19,
+   60
+  ],
+  "price_history": [
+   [
+    1785366000,
+    18
+   ],
+   [
+    1785452400,
+    18
+   ],
+   [
+    1785538800,
+    18
+   ],
+   [
+    1785625200,
+    18
+   ],
+   [
+    1785711600,
+    17
+   ],
+   [
+    1785798000,
+    17
+   ],
+   [
+    1785884400,
+    17
+   ],
+   [
+    1785970800,
+    17
+   ],
+   [
+    1786057200,
+    17
+   ],
+   [
+    1786143600,
+    17
+   ],
+   [
+    1786230000,
+    17
+   ],
+   [
+    1786316400,
+    18
+   ],
+   [
+    1786402800,
+    17
+   ],
+   [
+    1786489200,
+    17
+   ],
+   [
+    1786575600,
+    14
+   ],
+   [
+    1786662000,
+    14
+   ],
+   [
+    1786748400,
+    14
+   ],
+   [
+    1786834800,
+    14
+   ],
+   [
+    1786921200,
+    14
+   ],
+   [
+    1787007600,
+    14
+   ],
+   [
+    1787094000,
+    14
+   ],
+   [
+    1787180400,
+    14
+   ],
+   [
+    1787266800,
+    17
+   ],
+   [
+    1787353200,
+    17
+   ],
+   [
+    1787439600,
+    19
+   ],
+   [
+    1787526000,
+    19
+   ],
+   [
+    1787612400,
+    19
+   ],
+   [
+    1787698800,
+    21
+   ],
+   [
+    1787785200,
+    19
+   ],
+   [
+    1787871600,
+    19
+   ],
+   [
+    1787958000,
+    20
+   ],
+   [
+    1788044400,
+    20
+   ],
+   [
+    1788130800,
+    22
+   ],
+   [
+    1788217200,
+    17
+   ],
+   [
+    1788303600,
+    17
+   ],
+   [
+    1788390000,
+    18
+   ],
+   [
+    1788476400,
+    16
+   ],
+   [
+    1788562800,
+    18
+   ],
+   [
+    1788649200,
+    19
+   ],
+   [
+    1788735600,
+    20
+   ],
+   [
+    1788822000,
+    17
+   ],
+   [
+    1788908400,
+    17
+   ],
+   [
+    1788994800,
+    19
+   ],
+   [
+    1789081200,
+    19
+   ],
+   [
+    1789167600,
+    19
+   ],
+   [
+    1789254000,
+    20
+   ],
+   [
+    1789340400,
+    21
+   ],
+   [
+    1789426800,
+    19
+   ],
+   [
+    1789513200,
+    20
+   ],
+   [
+    1789599600,
+    22
+   ],
+   [
+    1789686000,
+    21
+   ],
+   [
+    1789772400,
+    21
+   ],
+   [
+    1789858800,
+    21
+   ],
+   [
+    1789945200,
+    20
+   ],
+   [
+    1790031600,
+    17
+   ],
+   [
+    1790118000,
+    17
+   ],
+   [
+    1790204400,
+    22
+   ],
+   [
+    1790290800,
+    19
+   ],
+   [
+    1790377200,
+    21
+   ],
+   [
+    1790463600,
+    20
+   ],
+   [
+    1790550000,
+    22
+   ],
+   [
+    1790636400,
+    22
+   ]
+  ]
+ },
+ "airports": [
+  {
+   "departure": [
+    {
+     "airport": {
+      "id": "LHR",
+      "name": "Heathrow Airport"
+     },
+     "city": "London",
+     "country": "United Kingdom",
+     "country_code": "GB",
+     "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpN9RbtOSTDqKIPxWc_D6rdSysaWVh6d-NW7yz7yFXKRwh5RN5BpNIoXEwH1XVcFdLWqn6Sm8_Y_zmeg",
+     "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYH83YXny8hR4M7k5BMFq4vUT6LNtVABQzgs2pg-hcpSZq3oMBOQK3xh591AAJv2Qx4uvFZUGqOVt4kuoCUOklISunmndJleOoSef_7QE"
+    },
+    {
+     "airport": {
+      "id": "LGW",
+      "name": "London Gatwick Airport"
+     },
+     "city": "London",
+     "country": "United Kingdom",
+     "country_code": "GB",
+     "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpN9RbtOSTDqKIPxWc_D6rdSysaWVh6d-NW7yz7yFXKRwh5RN5BpNIoXEwH1XVcFdLWqn6Sm8_Y_zmeg",
+     "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYH83YXny8hR4M7k5BMFq4vUT6LNtVABQzgs2pg-hcpSZq3oMBOQK3xh591AAJv2Qx4uvFZUGqOVt4kuoCUOklISunmndJleOoSef_7QE"
+    },
+    {
+     "airport": {
+      "id": "STN",
+      "name": "London Stansted Airport"
+     },
+     "city": "London",
+     "country": "United Kingdom",
+     "country_code": "GB",
+     "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpN9RbtOSTDqKIPxWc_D6rdSysaWVh6d-NW7yz7yFXKRwh5RN5BpNIoXEwH1XVcFdLWqn6Sm8_Y_zmeg",
+     "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYH83YXny8hR4M7k5BMFq4vUT6LNtVABQzgs2pg-hcpSZq3oMBOQK3xh591AAJv2Qx4uvFZUGqOVt4kuoCUOklISunmndJleOoSef_7QE"
+    },
+    {
+     "airport": {
+      "id": "LTN",
+      "name": "London Luton Airport"
+     },
+     "city": "London",
+     "country": "United Kingdom",
+     "country_code": "GB",
+     "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpN9RbtOSTDqKIPxWc_D6rdSysaWVh6d-NW7yz7yFXKRwh5RN5BpNIoXEwH1XVcFdLWqn6Sm8_Y_zmeg",
+     "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYH83YXny8hR4M7k5BMFq4vUT6LNtVABQzgs2pg-hcpSZq3oMBOQK3xh591AAJv2Qx4uvFZUGqOVt4kuoCUOklISunmndJleOoSef_7QE"
+    },
+    {
+     "airport": {
+      "id": "SEN",
+      "name": "London Southend Airport"
+     },
+     "city": "London",
+     "country": "United Kingdom",
+     "country_code": "GB",
+     "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpN9RbtOSTDqKIPxWc_D6rdSysaWVh6d-NW7yz7yFXKRwh5RN5BpNIoXEwH1XVcFdLWqn6Sm8_Y_zmeg",
+     "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYH83YXny8hR4M7k5BMFq4vUT6LNtVABQzgs2pg-hcpSZq3oMBOQK3xh591AAJv2Qx4uvFZUGqOVt4kuoCUOklISunmndJleOoSef_7QE"
+    },
+    {
+     "airport": {
+      "id": "LCY",
+      "name": "London City Airport"
+     },
+     "city": "London",
+     "country": "United Kingdom",
+     "country_code": "GB",
+     "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpN9RbtOSTDqKIPxWc_D6rdSysaWVh6d-NW7yz7yFXKRwh5RN5BpNIoXEwH1XVcFdLWqn6Sm8_Y_zmeg",
+     "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYH83YXny8hR4M7k5BMFq4vUT6LNtVABQzgs2pg-hcpSZq3oMBOQK3xh591AAJv2Qx4uvFZUGqOVt4kuoCUOklISunmndJleOoSef_7QE"
+    }
+   ],
+   "arrival": [
+    {
+     "airport": {
+      "id": "KRK",
+      "name": "John Paul II Krak\u00f3w Balice International Airport"
+     },
+     "city": "Krak\u00f3w",
+     "country": "Poland",
+     "country_code": "PL",
+     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTNA55ZPijK4cFFEsgB0Tzr917JIXoN-DiLspCiGKINr7BHn5OWgZBjwWyFxxq9IaGYtmuqkZkY4VxGQ",
+     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7U0cTcbFlHY51NVpnIREIHre5BzkCQzr6lOCAU_hss4Hr6WpjZFEXmsWLJ4t2QkwML9uiWSxp3D11Z6OnejLY72ZbKlGhiDeJhlVHoko"
+    }
+   ]
+  }
+ ]
+}
