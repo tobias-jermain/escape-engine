@@ -28,6 +28,17 @@ The installer isn't signed with an Apple Developer ID yet. If macOS says it "can
 go to **System Settings > Privacy & Security** and click **Open Anyway**. The first time the
 app runs, macOS also asks to let it control Terminal: click **OK**.
 
+## Publishing a release
+
+No local copy of the repo is needed:
+
+1. Make sure `version` in `pyproject.toml` (and `src/escape_engine/__init__.py`) is the new
+   version and that change is merged into `main`.
+2. On GitHub: **Actions > macOS package > Run workflow**, branch `main`, tick
+   **Publish a release**, then **Run workflow**.
+3. A few minutes later **Releases** has `vX.Y.Z` with the installer, and the app's
+   **Check for updates** offers it.
+
 ## Development
 
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.11+ (macOS or Linux).
