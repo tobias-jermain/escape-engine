@@ -121,10 +121,43 @@ def check_cmd(
     except (ValueError, LookupError, ArithmeticError) as exc:
         raise _fail(str(exc)) from None
 
+    try:
+        result = run_search(
+            origins=origins,
+            destination=destination,
+            day=day,
+            rules=rules,
+            pax=pax,
+            budget=budget,
+            order=order,
+            fresh=fresh,
+        )
+    except (ProviderError, BudgetError, ValueError) as exc:
+        raise _fail(str(exc)) from None
+
+    if as_json:
+        query = {"from": origins, "to": destination, "date": day.isoformat(), "pax": pax}
+        typer.echo(json.dumps(to_json(result, query, rules), indent=2))
+    else:
+        render(result, explain=explain)
+
+
+def run_search(
+    *,
+    origins: list[str],
+    destination: str,
+    day: date,
+    rules: TripRules,
+    pax: int = 1,
+    budget: int = 10,
+    order: list[SortKey] | None = None,
+    fresh: bool = False,
+) -> SearchResult:
+    """One live search, shared by ``escape check`` and ``escape menu``."""
     cache = Cache()
     engine = Engine([SerpApiFlights()], cache=cache, rates=fetch_rates, use_cache=not fresh)
     try:
-        result = asyncio.run(
+        return asyncio.run(
             engine.check(
                 origins=origins,
                 destination=destination,
@@ -132,19 +165,19 @@ def check_cmd(
                 rules=rules,
                 pax=pax,
                 budget=budget,
-                order=order,
+                order=order or ["price", "date", "usable"],
             )
         )
-    except (ProviderError, BudgetError, ValueError) as exc:
-        raise _fail(str(exc)) from None
     finally:
         cache.close()
 
-    if as_json:
-        query = {"from": origins, "to": destination, "date": day.isoformat(), "pax": pax}
-        typer.echo(json.dumps(to_json(result, query, rules), indent=2))
-    else:
-        render(result, explain=explain)
+
+@app.command("menu")
+def menu_cmd() -> None:
+    """Guided, step-by-step menu (what the Mac app opens)."""
+    from escape_engine.cli.menu import run_menu
+
+    run_menu()
 
 
 def _trip_json(t: DayTrip) -> dict[str, Any]:
@@ -185,8 +218,8 @@ def _table(title: str, trips: list[DayTrip]) -> Table:
     return table
 
 
-def render(result: SearchResult, *, explain: bool = False) -> None:
-    console = Console()
+def render(result: SearchResult, *, explain: bool = False, console: Console | None = None) -> None:
+    console = console or Console()
     if result.trips:
         console.print(_table("Day trips", result.trips))
     else:

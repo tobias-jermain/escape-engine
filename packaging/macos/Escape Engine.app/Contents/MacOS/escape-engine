@@ -1,0 +1,4 @@
+#!/bin/bash
+# Double-click launcher: opens Terminal (large text) running the guided menu.
+here="$(cd "$(dirname "$0")/.." && pwd)"
+exec /usr/bin/osascript "$here/Resources/launch.applescript" /usr/local/bin/escape

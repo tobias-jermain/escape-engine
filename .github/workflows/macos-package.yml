@@ -1,0 +1,89 @@
+name: macOS package
+
+# Builds ONE installer (EscapeEngine-<version>.pkg) that works on Apple Silicon and Intel Macs.
+# - Run it by hand: Actions > "macOS package" > Run workflow (download from the run's Artifacts).
+# - Push a tag like v0.2.0 to also publish it on the Releases page.
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+  pull_request:
+    paths:
+      - "packaging/**"
+      - "scripts/macos/**"
+      - ".github/workflows/macos-package.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  binary:
+    name: Build (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - arch: arm64
+            runner: macos-latest
+          - arch: x86_64
+            runner: macos-15-intel  # last Intel runner GitHub offers (until Aug 2027)
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --locked
+      - run: scripts/macos/build_binary.sh
+      - run: test -f "build/escape-macos-${{ matrix.arch }}.tar.gz"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: binary-${{ matrix.arch }}
+          path: build/escape-macos-${{ matrix.arch }}.tar.gz
+          retention-days: 3
+
+  package:
+    name: Installer
+    needs: binary
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: binary-*
+          path: build
+          merge-multiple: true
+      - run: scripts/macos/build_pkg.sh
+      - name: Install and smoke-test
+        run: |
+          sudo installer -pkg build/EscapeEngine-*.pkg -target /
+          escape --version
+          escape airports LON
+          printf '\n4\n' | escape menu
+          app="/Applications/Escape Engine.app"
+          test -x "$app/Contents/MacOS/escape-engine"
+          plutil -lint "$app/Contents/Info.plist"
+          osacompile -o "$RUNNER_TEMP/launch.scpt" "$app/Contents/Resources/launch.applescript"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EscapeEngine-macOS
+          path: build/EscapeEngine-*.pkg
+
+  release:
+    name: Publish release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: EscapeEngine-macOS
+          path: dist
+      - run: |
+          gh release create "$GITHUB_REF_NAME" dist/*.pkg \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Escape Engine $GITHUB_REF_NAME" \
+            --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

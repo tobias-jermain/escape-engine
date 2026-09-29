@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import tomllib
+import unicodedata
 from functools import cache
 from importlib import resources
 from zoneinfo import ZoneInfo
@@ -65,3 +66,25 @@ def resolve(spec: str) -> list[str]:
     if not out:
         raise ValueError("no airports given")
     return list(out)
+
+
+def _fold(text: str) -> str:
+    """Lower-case and strip accents, so "Kraków" matches "Krakow"."""
+    decomposed = unicodedata.normalize("NFKD", text.strip().lower())
+    return "".join(c for c in decomposed if not unicodedata.combining(c))
+
+
+def search(text: str, limit: int = 8) -> list[Airport]:
+    """Find airports by IATA code, city or name (case/accent-insensitive), best matches first."""
+    needle = _fold(text)
+    if not needle:
+        return []
+    everything = _airports().values()
+    exact = [a for a in everything if a.iata.lower() == needle]
+    city = [a for a in everything if _fold(a.city) == needle and a not in exact]
+    partial = [
+        a
+        for a in everything
+        if a not in exact and a not in city and (needle in _fold(a.city) or needle in _fold(a.name))
+    ]
+    return [*exact, *city, *partial][:limit]
