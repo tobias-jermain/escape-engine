@@ -1,0 +1,10 @@
+# Airport groups usable anywhere an airport code is accepted (e.g. --from LON).
+# Groups may reference other groups. Add new home regions here, not in code.
+
+LON = ["LHR", "LGW", "STN", "LTN", "SEN", "LCY"]
+
+UK = [
+  "LON",
+  "BHX", "MAN", "BRS", "EDI", "GLA", "PIK", "LPL", "NCL", "LBA", "EMA",
+  "BFS", "BHD", "ABZ", "INV", "CWL", "SOU", "EXT", "NQY", "BOH",
+]
