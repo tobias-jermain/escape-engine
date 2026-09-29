@@ -1,0 +1,77 @@
+{
+  "_note": "Synthetic fixture shaped on the documented SerpApi Google Flights response (not a recorded live call).",
+  "search_metadata": {
+    "status": "Success",
+    "google_flights_url": "https://www.google.com/travel/flights?hl=en"
+  },
+  "best_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {"name": "London Stansted Airport", "id": "STN", "time": "2026-11-14 06:30"},
+          "arrival_airport": {"name": "Krakow Airport", "id": "KRK", "time": "2026-11-14 09:55"},
+          "duration": 145,
+          "airline": "Ryanair",
+          "flight_number": "FR 2446"
+        }
+      ],
+      "total_duration": 145,
+      "price": 19,
+      "type": "One way"
+    }
+  ],
+  "other_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {"name": "London Luton Airport", "id": "LTN", "time": "2026-11-14 06:05"},
+          "arrival_airport": {"name": "Krakow Airport", "id": "KRK", "time": "2026-11-14 09:35"},
+          "duration": 150,
+          "airline": "Wizz Air",
+          "flight_number": "W9 5301"
+        }
+      ],
+      "total_duration": 150,
+      "price": 31,
+      "type": "One way"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {"name": "London Stansted Airport", "id": "STN", "time": "2026-11-14 06:30"},
+          "arrival_airport": {"name": "Krakow Airport", "id": "KRK", "time": "2026-11-14 09:55"},
+          "airline": "Ryanair",
+          "flight_number": "FR 2446"
+        }
+      ],
+      "price": 24,
+      "type": "One way"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {"name": "London Gatwick Airport", "id": "LGW", "time": "2026-11-14 07:00"},
+          "arrival_airport": {"name": "Amsterdam Airport Schiphol", "id": "AMS", "time": "2026-11-14 09:15"},
+          "flight_number": "U2 8871"
+        },
+        {
+          "departure_airport": {"name": "Amsterdam Airport Schiphol", "id": "AMS", "time": "2026-11-14 11:00"},
+          "arrival_airport": {"name": "Krakow Airport", "id": "KRK", "time": "2026-11-14 13:05"},
+          "flight_number": "KL 1995"
+        }
+      ],
+      "price": 140,
+      "type": "One way"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {"id": "STN", "time": "2026-11-14 08:00"},
+          "arrival_airport": {"id": "KRK", "time": "2026-11-14 11:25"},
+          "flight_number": "FR 2448"
+        }
+      ],
+      "type": "One way"
+    }
+  ]
+}
