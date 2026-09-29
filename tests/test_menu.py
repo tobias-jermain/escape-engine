@@ -10,16 +10,21 @@ import pytest
 from rich.console import Console
 
 import escape_engine.cli as cli
-from escape_engine.cli.menu import next_saturday, run_menu
-from escape_engine.providers.serpapi import SerpApiFlights
+from escape_engine import keystore, settings
+from escape_engine.cli.menu import MenuDeps, next_saturday, run_menu
+from escape_engine.providers.base import ProviderError
 from escape_engine.search.engine import SearchResult
+from escape_engine.update import Release
 
 TODAY = date(2026, 9, 29)  # a Tuesday
+NEWER = Release("9.0.0", "https://example.test", "E.pkg", "https://example.test/E.pkg", None)
 
 
 def feed(monkeypatch: pytest.MonkeyPatch, answers: list[str]) -> None:
+    """Answer prompts in order, including hidden (password) ones."""
     it: Iterator[str] = iter(answers)
     monkeypatch.setattr("builtins.input", lambda *a, **k: next(it))
+    monkeypatch.setattr("getpass.getpass", lambda *a, **k: next(it))
 
 
 def console() -> tuple[Console, io.StringIO]:
@@ -27,35 +32,82 @@ def console() -> tuple[Console, io.StringIO]:
     return Console(file=buf, width=100, force_terminal=False), buf
 
 
-def test_first_run_shows_guide_once(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    monkeypatch.delenv("SERPAPI_API_KEY", raising=False)
-    state = tmp_path / "state.json"
+def deps(tmp_path: Path, **kw: Any) -> MenuDeps:
+    base: dict[str, Any] = {
+        "settings_file": tmp_path / "settings.json",
+        "credentials_file": tmp_path / "credentials.json",
+        "check_key": lambda key: {"plan_name": "Free Plan", "plan_searches_left": 247},
+        "latest_release": lambda: None,
+        "update_if_due": lambda: None,
+        "installed_via_pkg": lambda: True,
+    }
+    base.update(kw)
+    return MenuDeps(**base)
+
+
+def done(d: MenuDeps, **kw: Any) -> None:
+    settings.save(settings.Settings(setup_done=True, **kw), d.settings_file)
+
+
+def test_first_run_guide_then_setup(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    d = deps(tmp_path)
     con, buf = console()
-    feed(monkeypatch, ["", "4"])
-    run_menu(console=con, state_file=state, today=TODAY)
+    # enter, key (hidden), home, price, depart, return, min time, updates, then quit
+    feed(monkeypatch, ["", "my-key", "UK", "60", "", "02:30+1", "", "n", "5"])
+    run_menu(console=con, deps=d, today=TODAY)
     out = buf.getvalue()
     assert "Welcome to Escape Engine" in out
-    assert "How to add your SerpApi key" in out
-    assert state.exists()
+    assert "Key saved." in out and "247 searches left" in out
+    assert "my-key" not in out  # never echoed
+    assert keystore.get("SERPAPI_API_KEY", d.credentials_file) == "my-key"
+    s = settings.load(d.settings_file)
+    assert (s.setup_done, s.home, s.max_price, s.return_by, s.auto_update_check) == (
+        True,
+        "UK",
+        "60",
+        "02:30+1",
+        False,
+    )
 
     con, buf = console()
-    feed(monkeypatch, ["4"])
-    run_menu(console=con, state_file=state, today=TODAY)
+    feed(monkeypatch, ["5"])
+    run_menu(console=con, deps=d, today=TODAY)
     assert "Welcome to Escape Engine" not in buf.getvalue()
 
 
-def test_search_without_key_explains_setup(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    monkeypatch.delenv("SERPAPI_API_KEY", raising=False)
-    (tmp_path / "state.json").write_text('{"guide_seen": true}')
+def test_setup_rejects_bad_answers_and_bad_key(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    def bad_key(key: str) -> dict[str, Any]:
+        raise ProviderError("SerpApi says this key is not valid")
+
+    d = deps(tmp_path, check_key=bad_key)
     con, buf = console()
-    feed(monkeypatch, ["1", "4"])
-    run_menu(console=con, state_file=tmp_path / "state.json", today=TODAY)
-    assert "A SerpApi key is needed first" in buf.getvalue()
+    feed(
+        monkeypatch,
+        ["", "wrong", "n", "", "XXX", "LON", "-5", "75", "5am", "05:30", "", "", "", "5"],
+    )
+    run_menu(console=con, deps=d, today=TODAY)
+    out = buf.getvalue()
+    assert "not valid" in out
+    assert keystore.get("SERPAPI_API_KEY", d.credentials_file) == ""
+    assert out.count("Please try again") == 3
+    assert settings.load(d.settings_file).depart_after == "05:30"
 
 
-def test_find_trip_flow(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    (tmp_path / "state.json").write_text('{"guide_seen": true}')
-    monkeypatch.setattr(SerpApiFlights, "configured", lambda self: True)
+def test_env_key_is_used_without_asking(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    monkeypatch.setenv("SERPAPI_API_KEY", "from-env")
+    d = deps(tmp_path)
+    con, buf = console()
+    feed(monkeypatch, ["", "", "", "", "", "", "", "5"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert "from the SERPAPI_API_KEY environment variable" in buf.getvalue()
+
+
+def test_find_trip_uses_saved_settings(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    d = deps(tmp_path)
+    done(d, home="STN", max_price="50", min_ground="7h")
+    keystore.put("SERPAPI_API_KEY", "k", d.credentials_file)
     calls: list[dict[str, Any]] = []
 
     def fake_search(**kw: Any) -> SearchResult:
@@ -64,14 +116,75 @@ def test_find_trip_flow(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None
 
     monkeypatch.setattr(cli, "run_search", fake_search)
     con, buf = console()
-    feed(monkeypatch, ["1", "LON", "Kraków", "", "60", "y", "4"])
-    run_menu(console=con, state_file=tmp_path / "state.json", today=TODAY)
+    feed(monkeypatch, ["1", "", "Kraków", "", "", "y", "5"])
+    run_menu(console=con, deps=d, today=TODAY)
     assert len(calls) == 1
-    assert calls[0]["destination"] == "KRK"
-    assert calls[0]["day"] == date(2026, 10, 3)  # next Saturday
-    assert str(calls[0]["rules"].max_price) == "60"
-    assert calls[0]["budget"] == 2
+    call = calls[0]
+    assert (call["origins"], call["destination"], call["day"]) == (
+        ["STN"],
+        "KRK",
+        date(2026, 10, 3),
+    )
+    assert str(call["rules"].max_price) == "50"
+    assert call["rules"].min_ground.total_seconds() == 7 * 3600
     assert "Live calls used: 2" in buf.getvalue()
+
+
+def test_find_trip_without_key(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    d = deps(tmp_path)
+    done(d)
+    con, buf = console()
+    feed(monkeypatch, ["1", "5"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert "An API key is needed first" in buf.getvalue()
+
+
+def test_update_downloads_and_opens_installer(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    opened: list[Path] = []
+    d = deps(
+        tmp_path,
+        latest_release=lambda: NEWER,
+        download=lambda rel: tmp_path / "E.pkg",
+        open_installer=opened.append,
+    )
+    done(d)
+    con, buf = console()
+    feed(monkeypatch, ["3", ""])  # menu closes itself after opening the installer
+    run_menu(console=con, deps=d, today=TODAY)
+    assert opened == [tmp_path / "E.pkg"]
+    assert "The installer is open" in buf.getvalue()
+
+
+def test_update_up_to_date_and_dev_copy(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    d = deps(tmp_path, latest_release=lambda: None)
+    done(d)
+    con, buf = console()
+    feed(monkeypatch, ["3", "5"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert "No releases have been published yet" in buf.getvalue()
+
+    d = deps(tmp_path, latest_release=lambda: NEWER, installed_via_pkg=lambda: False)
+    con, buf = console()
+    feed(monkeypatch, ["3", "5"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert "git pull" in buf.getvalue()
+
+
+def test_daily_update_notice(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    d = deps(tmp_path, update_if_due=lambda: NEWER)
+    done(d)
+    con, buf = console()
+    feed(monkeypatch, ["5"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert "Version 9.0.0 is available" in buf.getvalue()
+
+    done(d, auto_update_check=False)
+    con, buf = console()
+    feed(monkeypatch, ["5"])
+    run_menu(console=con, deps=d, today=TODAY)
+    assert "is available" not in buf.getvalue()
 
 
 def test_next_saturday() -> None:

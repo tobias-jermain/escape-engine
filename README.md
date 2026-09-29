@@ -16,8 +16,13 @@ Early development. See [`docs/PLAN.md`](docs/PLAN.md) for the design and milesto
 1. Download **EscapeEngine-x.y.z.pkg** from the repo's **Releases** page (or from the
    latest "macOS package" run under **Actions** > Artifacts).
 2. Double-click it and follow the installer. One installer works on Apple Silicon and Intel Macs.
-3. **Escape Engine** opens with a large-text guide. Later, open it any time from Applications
-   or Launchpad, or type `escape` in Terminal.
+3. **Escape Engine** opens with a large-text guide and a short **setup**: paste your
+   [SerpApi](https://serpapi.com/) key (checked and saved privately on your Mac), then choose home
+   airports, budget and times. Change them any time under **Settings and API key**.
+4. Later, open it from Applications or Launchpad, or type `escape` in Terminal.
+
+**Updates:** the app checks for a new version once a day (you can turn this off in setup).
+Choose **Check for updates** in the menu to download it; the macOS installer then opens.
 
 The installer isn't signed with an Apple Developer ID yet. If macOS says it "can't be opened",
 go to **System Settings > Privacy & Security** and click **Open Anyway**. The first time the
@@ -42,7 +47,7 @@ uv run ruff check . && uv run mypy
 Live prices come from [SerpApi](https://serpapi.com/)'s Google Flights API using your own key:
 
 ```bash
-export SERPAPI_API_KEY="..."     # e.g. in ~/.zshrc
+uv run escape setup              # save your key and defaults (or: export SERPAPI_API_KEY=...)
 uv run escape check --from LON --to KRK --date 2026-11-14
 uv run escape check --from LON --to KRK --date 2026-11-14 --return-by 02:30+1 --json
 ```

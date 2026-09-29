@@ -1,6 +1,6 @@
 [project]
 name = "escape-engine"
-version = "0.1.0"
+version = "0.2.0"
 description = "Engine for finding ultra-cheap extreme day-trip flights."
 readme = "README.md"
 requires-python = ">=3.11"

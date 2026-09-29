@@ -12,7 +12,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from escape_engine import __version__
+from escape_engine import __version__, settings
 from escape_engine.cache import Cache
 from escape_engine.core import airports
 from escape_engine.core.models import DayTrip, TripRules
@@ -82,14 +82,24 @@ def providers_cmd() -> None:
 def check_cmd(
     to: Annotated[str, typer.Option("--to", help="Destination airport code, e.g. KRK.")],
     on: Annotated[str, typer.Option("--date", help="Trip date, YYYY-MM-DD.")],
-    origin: Annotated[str, typer.Option("--from", help="Home airports or groups.")] = "LON",
-    max_price: Annotated[str, typer.Option("--max", help="Return fare per person.")] = "75",
+    origin: Annotated[
+        str | None, typer.Option("--from", help="Home airports or groups. [default: setup]")
+    ] = None,
+    max_price: Annotated[
+        str | None, typer.Option("--max", help="Return fare per person. [default: setup]")
+    ] = None,
     stretch: Annotated[str, typer.Option(help="Extra fraction shown as 'just over'.")] = "0.20",
-    currency: Annotated[str, typer.Option(help="Home currency.")] = "GBP",
+    currency: Annotated[str | None, typer.Option(help="Home currency. [default: setup]")] = None,
     pax: Annotated[int, typer.Option(min=1, max=9, help="Passengers.")] = 1,
-    depart_after: Annotated[str, typer.Option(help="Earliest departure, HH:MM.")] = "05:00",
-    return_by: Annotated[str, typer.Option(help="Latest landing: 23:59 or 02:30+1.")] = "23:59",
-    min_ground: Annotated[str, typer.Option(help="Min time at destination.")] = "6h",
+    depart_after: Annotated[
+        str | None, typer.Option(help="Earliest departure, HH:MM. [default: setup]")
+    ] = None,
+    return_by: Annotated[
+        str | None, typer.Option(help="Latest landing: 23:59 or 02:30+1. [default: setup]")
+    ] = None,
+    min_ground: Annotated[
+        str | None, typer.Option(help="Min time at destination. [default: setup]")
+    ] = None,
     min_usable: Annotated[str, typer.Option(help="Warn below this usable time.")] = "4h",
     overnight: Annotated[bool, typer.Option(help="Allow a night away.")] = False,
     allow_connections: Annotated[bool, typer.Option(help="Last resort: allow stops.")] = False,
@@ -101,21 +111,22 @@ def check_cmd(
     as_json: Annotated[bool, typer.Option("--json", help="Machine-readable output.")] = False,
 ) -> None:
     """Find valid day trips to one destination on one date (live prices)."""
+    saved = settings.load()
     try:
         day = date.fromisoformat(on)
-        origins = airports.resolve(origin)
+        origins = airports.resolve(origin or saved.home)
         destination = airports.get(to).iata
-        rules = TripRules(
-            depart_after=parse_clock(depart_after),
-            return_by=parse_return_by(return_by),
-            min_ground=parse_duration(min_ground),
+        rules = saved.rules(
+            depart_after=parse_clock(depart_after) if depart_after else None,
+            return_by=parse_return_by(return_by) if return_by else None,
+            min_ground=parse_duration(min_ground) if min_ground else None,
             min_usable=parse_duration(min_usable),
             overnight=overnight,
             allow_connections=allow_connections,
             allow_open_jaw=open_jaw,
-            max_price=Decimal(max_price),
+            max_price=Decimal(max_price) if max_price else None,
             stretch=Decimal(stretch),
-            currency=currency.upper(),
+            currency=currency.upper() if currency else None,
         )
         order: list[SortKey] = [k.strip() for k in sort.split(",") if k.strip()]  # type: ignore[misc]
     except (ValueError, LookupError, ArithmeticError) as exc:
@@ -178,6 +189,22 @@ def menu_cmd() -> None:
     from escape_engine.cli.menu import run_menu
 
     run_menu()
+
+
+@app.command("setup")
+def setup_cmd() -> None:
+    """Run setup: API key, home airports, budget, times and updates."""
+    from escape_engine.cli.menu import MenuDeps, run_setup
+
+    run_setup(Console(), MenuDeps(), settings.load())
+
+
+@app.command("update")
+def update_cmd() -> None:
+    """Check for a newer version and install it."""
+    from escape_engine.cli.menu import MenuDeps, do_update
+
+    do_update(Console(), MenuDeps())
 
 
 def _trip_json(t: DayTrip) -> dict[str, Any]:

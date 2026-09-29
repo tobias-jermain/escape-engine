@@ -1,11 +1,10 @@
 """SerpApi Google Flights provider (live quotes). Docs: https://serpapi.com/google-flights-api
 
-The user supplies their own key via the ``SERPAPI_API_KEY`` environment variable.
+The user supplies their own key: ``SERPAPI_API_KEY`` in the environment, or saved in setup.
 """
 
 from __future__ import annotations
 
-import os
 from collections.abc import Mapping, Sequence
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -13,11 +12,13 @@ from typing import Any
 
 import httpx
 
+from escape_engine import keystore
 from escape_engine.core import airports
 from escape_engine.core.models import Flight, Money
 from escape_engine.providers.base import OneWayQuery, ProviderConfigError, ProviderError
 
 ENDPOINT = "https://serpapi.com/search.json"
+ACCOUNT_ENDPOINT = "https://serpapi.com/account.json"
 KEY_ENV = "SERPAPI_API_KEY"
 _NO_RESULTS = "hasn't returned any results"
 
@@ -33,7 +34,7 @@ class SerpApiFlights:
         client: httpx.AsyncClient | None = None,
         timeout: float = 60.0,
     ) -> None:
-        self._key = api_key if api_key is not None else os.environ.get(KEY_ENV, "")
+        self._key = api_key if api_key is not None else keystore.get(KEY_ENV)
         self._client = client
         self._timeout = timeout
 
@@ -79,6 +80,26 @@ class SerpApiFlights:
         if resp.status_code != 200 and not data.get("error"):
             raise ProviderError(f"serpapi returned HTTP {resp.status_code}")
         return parse(data, query=query, fetched_at=datetime.now(UTC))
+
+
+def check_key(api_key: str, client: httpx.Client | None = None) -> dict[str, Any]:
+    """Validate a key via the free account endpoint (uses no search quota).
+
+    Returns the account details (plan, searches left). Raises ``ProviderError`` if invalid.
+    """
+    own = client is None
+    client = client or httpx.Client(timeout=20.0)
+    try:
+        resp = client.get(ACCOUNT_ENDPOINT, params={"api_key": api_key})
+        data = resp.json()
+    except (httpx.HTTPError, ValueError):
+        raise ProviderError("could not reach SerpApi to check the key") from None
+    finally:
+        if own:
+            client.close()
+    if not isinstance(data, dict) or data.get("error"):
+        raise ProviderError("SerpApi says this key is not valid")
+    return data
 
 
 def parse(data: Mapping[str, Any], *, query: OneWayQuery, fetched_at: datetime) -> list[Flight]:
